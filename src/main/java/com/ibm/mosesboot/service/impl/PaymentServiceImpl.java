@@ -18,7 +18,7 @@ import java.util.List;
  * @author Moses
  * @date 2019/7/28
  */
-@Service("userService")
+@Service("paymentService")
 public class PaymentServiceImpl implements IPaymentService {
     @Override
     public List<Payment> getIncrementList(SalaryVo vo) {
