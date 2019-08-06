@@ -1,14 +1,13 @@
 /*
  * Copyright © 2019 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.service.impl.PaymentServiceImpl
+ * @description: com.ibm.mosesboot.service.impl.SalaryPOServiceImpl
  * @version V1.0
  */
 package com.ibm.mosesboot.service.impl;
 
-import com.ibm.mosesboot.entity.Frequently;
-import com.ibm.mosesboot.entity.Payment;
-import com.ibm.mosesboot.entity.SalaryVo;
+import com.ibm.mosesboot.po.SalaryPO;
 import com.ibm.mosesboot.service.IPaymentService;
+import com.ibm.mosesboot.vo.SalaryVO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,12 +20,12 @@ import java.util.List;
 @Service("paymentService")
 public class PaymentServiceImpl implements IPaymentService {
     @Override
-    public List<Payment> getIncrementList(SalaryVo vo) {
-        List<Payment> paymentList = new ArrayList<Payment>();
+    public List<SalaryPO> getIncrementList(SalaryVO vo) {
+        List<SalaryPO> paymentList = new ArrayList<SalaryPO>();
         Double curSalary = vo.getSalary();
         Double incrementRate = vo.getIncrement() * (12 / vo.getIncrementFrequently());
         for (int i = 1; i <= vo.getPrediction(); i++) {
-            Payment payment = new Payment();
+            SalaryPO payment = new SalaryPO();
             payment.setYear(i);
             payment.setSalary(curSalary);
             payment.setNumber(curSalary * incrementRate);
@@ -39,12 +38,12 @@ public class PaymentServiceImpl implements IPaymentService {
     }
 
     @Override
-    public List<Payment> getDeductionList(SalaryVo vo) {
-        List<Payment> paymentList = new ArrayList<Payment>();
+    public List<SalaryPO> getDeductionList(SalaryVO vo) {
+        List<SalaryPO> paymentList = new ArrayList<SalaryPO>();
         Double curSalary = vo.getSalary();
         Double deductionRate = vo.getDeduction() * (12 / vo.getDeductionFrequently());
         for (int i = 1; i <= vo.getPrediction(); i++) {
-            Payment payment = new Payment();
+            SalaryPO payment = new SalaryPO();
             payment.setYear(i);
             payment.setSalary(curSalary);
             payment.setNumber(curSalary * deductionRate);
@@ -57,13 +56,13 @@ public class PaymentServiceImpl implements IPaymentService {
     }
 
     @Override
-    public List<Payment> getPredictionList(SalaryVo vo) {
-        List<Payment> paymentList = new ArrayList<Payment>();
+    public List<SalaryPO> getPredictionList(SalaryVO vo) {
+        List<SalaryPO> paymentList = new ArrayList<SalaryPO>();
         Double curSalary = vo.getSalary();
         Double incrementRate = vo.getIncrement() * (12 / vo.getIncrementFrequently());
         Double deductionRate = vo.getDeduction() * (12 / vo.getDeductionFrequently());
         for (int i = 1; i <= vo.getPrediction(); i++) {
-            Payment payment = new Payment();
+            SalaryPO payment = new SalaryPO();
             payment.setYear(i);
             payment.setSalary(curSalary);
             payment.setIncrementAmount(curSalary * incrementRate);
@@ -76,8 +75,8 @@ public class PaymentServiceImpl implements IPaymentService {
     }
 
     @Override
-    public SalaryVo getSalaryVo() {
-        SalaryVo vo = new SalaryVo();
+    public SalaryVO getSalaryVo() {
+        SalaryVO vo = new SalaryVO();
         vo.setSalary(1000.00);
         vo.setIncrement(0.3);
         vo.setIncrementFrequently(12);
@@ -85,20 +84,6 @@ public class PaymentServiceImpl implements IPaymentService {
         vo.setDeductionFrequently(12);
         vo.setPrediction(3);
         return vo;
-    }
-
-    @Override
-    public List<Frequently> getFrequentlyList() {
-        List<Frequently> frequentlyList = new ArrayList<Frequently>();
-        String[] names = {"monthly", "quarterly", "half-yearly", "annually"};
-        Integer[] nums = {1, 3, 6, 12};
-        for (int i = 0; i < 4; i++) {
-            Frequently frequently = new Frequently();
-            frequently.setName(names[i]);
-            frequently.setNum(nums[i]);
-            frequentlyList.add(frequently);
-        }
-        return frequentlyList;
     }
 
     @Override

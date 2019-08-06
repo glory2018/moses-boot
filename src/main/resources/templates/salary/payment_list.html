@@ -24,7 +24,7 @@
 <body>
 <div class="container">
     <h1>Salary Income Predictor</h1>
-    <!--/*@thymesVar id="vo" type="com.ibm.mosesboot.entity.SalaryVo"*/-->
+    <!--/*@thymesVar id="vo" type="com.ibm.mosesboot.vo.SalaryVO"*/-->
     <form th:action="@{/payment/list}" th:object="${vo}" method="post">
         <div class="form-group">
             <label for="inputSalary">Salary</label>
@@ -80,7 +80,7 @@
         </div>
         <button type="submit" class="btn btn-primary" id="submitId">Submit</button>
     </form>
-    <!--/*@thymesVar id="item" type="com.ibm.mosesboot.entity.Payment"*/-->
+    <!--/*@thymesVar id="item" type="com.ibm.mosesboot.po.Payment"*/-->
     <h1>Increment Report</h1>
     <table class="table">
         <thead>
@@ -93,7 +93,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="payment,item:${incrementList}">
+        <tr th:each="payment:${incrementList}">
             <td th:text="${payment.year}"/>
             <td th:text="${payment.salary}"/>
             <td th:text="${payment.number}"/>
@@ -114,7 +114,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="payment,item:${deductionList}">
+        <tr th:each="payment:${deductionList}">
             <td th:text="${payment.year}"/>
             <td th:text="${payment.salary}"/>
             <td th:text="${payment.number}"/>
@@ -136,7 +136,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="payment,item:${predictionList}">
+        <tr th:each="payment:${predictionList}">
             <td th:text="${payment.year}"/>
             <td th:text="${payment.salary}"/>
             <td th:text="${payment.incrementAmount}"/>

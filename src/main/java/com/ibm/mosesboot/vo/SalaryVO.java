@@ -3,7 +3,7 @@
  * @description: com.ibm.mosesboot.entity.Payment
  * @version V1.0
  */
-package com.ibm.mosesboot.entity;
+package com.ibm.mosesboot.vo;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ import lombok.Data;
  * @date 2019/7/28
  */
 @Data
-public class SalaryVo {
+public class SalaryVO {
     private Double salary;
     private Integer incrementFrequently;
     private Double increment;

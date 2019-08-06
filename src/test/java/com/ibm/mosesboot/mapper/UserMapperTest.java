@@ -24,7 +24,6 @@ import java.util.List;
 @MapperScan("com.ibm.mosesboot.mapper")
 @SpringBootTest
 public class UserMapperTest {
-
     @Autowired
     private UserMapper userMapper;
 
@@ -35,5 +34,4 @@ public class UserMapperTest {
         Assert.assertEquals(5, userList.size());
         userList.forEach(System.out::println);
     }
-
 }
