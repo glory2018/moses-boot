@@ -1,7 +1,7 @@
 package com.ibm.mosesboot.controller;
 
 import com.google.zxing.WriterException;
-import com.ibm.mosesboot.util.QRCodeGenerator;
+import com.ibm.mosesboot.util.rich.QRCodeGenerator;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

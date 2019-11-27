@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ibm</groupId>
-    <artifactId>mosesboot</artifactId>
+    <artifactId>moses-boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mosesboot</name>
-    <description>Demo project for Spring Boot</description>
+    <name>moses-boot</name>
+    <description>A basic starter template using springboot, jpa data, thymeleaf and MVC</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -98,6 +98,26 @@
             <groupId>com.github.penggle</groupId>
             <artifactId>kaptcha</artifactId>
             <version>2.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.docx4j</groupId>
+            <artifactId>docx4j</artifactId>
+            <version>6.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.11.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.28</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>4.1.1</version>
         </dependency>
     </dependencies>
     <build>
