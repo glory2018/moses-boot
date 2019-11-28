@@ -9,5 +9,5 @@ import com.ibm.mosesboot.entity.Ueditor;
 public interface IUeditorService {
     void save(Ueditor ueditor);
 
-    void export(Ueditor ueditor);
+    void export(Ueditor ueditor) throws Exception;
 }

@@ -1,17 +1,17 @@
-/*
- * Copyright © 2019 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.util.ueditor.UUIDUtils
- * @version V1.0
- */
 package com.ibm.mosesboot.util;
 
 import java.util.UUID;
 
 /**
- * @author Moses
- * @date 2019/11/27
+ * Created by wesley on 2017-05-10.
+ * 生成UUID工具类
  */
 public class UUIDUtils {
+    /**
+     * 创建一个32位的UUID
+     *
+     * @return
+     */
     public static String get32UUID() {
         return UUID.randomUUID().toString().replace("-", "");
     }

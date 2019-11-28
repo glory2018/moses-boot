@@ -3,7 +3,7 @@
  * @description: KaptchaConfig
  * @version V1.0
  */
-package com.ibm.mosesboot.util;
+package com.ibm.mosesboot.util.rich;
 /**
  * @author Moses
  * @date 2019/8/4

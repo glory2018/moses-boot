@@ -5,13 +5,18 @@
  */
 package com.ibm.mosesboot.entity;
 
-import lombok.Data;
-
 /**
  * @author Moses
  * @date 2019/11/27
  */
-@Data
 public class ProjectPepole {
     private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

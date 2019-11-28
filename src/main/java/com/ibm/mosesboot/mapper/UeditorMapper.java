@@ -8,12 +8,17 @@ package com.ibm.mosesboot.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ibm.mosesboot.entity.Ueditor;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * @author Moses *
  * @Date 2019/1/21 15:40
  */
 public interface UeditorMapper extends BaseMapper<Ueditor> {
-    @Insert("INSERT INTO Ueditor(content) VALUES(#{content})")
+    @Override
+    @Insert("INSERT INTO Ueditor(id,name,content) VALUES(#{content},#{content},#{content})")
     int insert(Ueditor ueditor);
+
+    @Select("select * from Ueditor where id = #{id}")
+    Ueditor findUeditorById(Integer id);
 }

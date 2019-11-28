@@ -1,28 +1,23 @@
-package com.ibm.mosesboot.util.ueditor;
+package com.ibm.mosesboot.export;
 
-import com.ibm.mosesboot.entity.ProjectPepole;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.util.ReflectionUtils.FieldCallback;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
- * @version V1.0
- * @Description:word 网页导出（单文件网页导出，mht文件格式）
- * @author:LiaoFei
- * @date :2016-3-28 上午11:17:38
+ * Created by wesley on 2017-05-10.
  */
 public class WordHtmlGeneratorHelper {
     /**
-     * @param @param  source
-     * @param @return
-     * @return String
-     * @throws
-     * @Description: 将字符换成3Dus-asci，十进制Accsii码
-     * @author:LiaoFei
-     * @date:2016-3-28 上午11:18:39
+     * 将字符换成3Dus-asci，十进制Accsii码
+     *
+     * @param source
+     * @return
      */
     public static String string2Ascii(String source) {
         if (source == null || source == "") {
@@ -43,16 +38,14 @@ public class WordHtmlGeneratorHelper {
     }
 
     /**
-     * @param @param  object
-     * @param @return
-     * @return T
-     * @throws
-     * @Description: 将object的所有属性值转成成3Dus-asci编码值
-     * @author:LiaoFei
-     * @date:2016-3-29 下午2:56:24
+     * 将object的所有属性值转成成3Dus-asci编码值
+     *
+     * @param toHandleObject
+     * @param <T>
+     * @return
      */
     public static <T extends Object> T handleObject2Ascii(final T toHandleObject) {
-        class myFieldsCallBack implements FieldCallback {
+        class myFieldsCallBack implements ReflectionUtils.FieldCallback {
             @Override
             public void doWith(Field f) throws IllegalArgumentException,
                     IllegalAccessException {
@@ -71,6 +64,13 @@ public class WordHtmlGeneratorHelper {
         return toHandleObject;
     }
 
+    /**
+     * list所有属性值转成成3Dus-asci编码值
+     *
+     * @param toHandleObjects
+     * @param <T>
+     * @return
+     */
     public static <T extends Object> List<T> handleObjectList2Ascii(final List<T> toHandleObjects) {
         for (T t : toHandleObjects) {
             handleObject2Ascii(t);
@@ -78,6 +78,11 @@ public class WordHtmlGeneratorHelper {
         return toHandleObjects;
     }
 
+    /**
+     * 处理所有的数据
+     *
+     * @param dataMap
+     */
     public static void handleAllObject(Map<String, Object> dataMap) {
         //去处理数据
         for (Map.Entry<String, Object> entry : dataMap.entrySet()) {
@@ -98,6 +103,13 @@ public class WordHtmlGeneratorHelper {
         }
     }
 
+    /**
+     * 拼接数据
+     *
+     * @param list
+     * @param join
+     * @return
+     */
     public static String joinList(List<String> list, String join) {
         StringBuilder sb = new StringBuilder();
         for (String t : list) {
@@ -109,6 +121,12 @@ public class WordHtmlGeneratorHelper {
         return sb.toString();
     }
 
+    /**
+     * 判断是否是原始类型
+     *
+     * @param clazz
+     * @return
+     */
     private static boolean isPrimitiveType(Class<?> clazz) {
         return clazz.isEnum() ||
                 CharSequence.class.isAssignableFrom(clazz) ||
@@ -116,33 +134,13 @@ public class WordHtmlGeneratorHelper {
                 Date.class.isAssignableFrom(clazz);
     }
 
+    /**
+     * 判断是否是集合类
+     *
+     * @param clazz
+     * @return
+     */
     private static boolean isCollection(Class<?> clazz) {
         return Collection.class.isAssignableFrom(clazz);
-    }
-
-    public static void main(String[] args) {
-//		ProjectZrdw object=new ProjectZrdw();
-//		
-//		object.setDwname("湖南省交通科学研究院");
-//		object.setDwszd("长沙");
-//		
-//		handleObject2Ascii(object);
-//		
-//		System.out.println(object.getDwname() +"\n");
-//		System.out.println(object.getDwszd());
-		
-		/*ProjectSbWithBLOBs sb=new ProjectSbWithBLOBs();
-		sb.setSbdw("湖南省交通科学研究院");
-		
-		handleObject2Ascii(sb);
-		System.out.println(sb.getSbdw());*/
-        List<ProjectPepole> peoles = new ArrayList<ProjectPepole>();
-        ProjectPepole people = new ProjectPepole();
-        people.setName("廖飞");
-        peoles.add(people);
-        handleObjectList2Ascii(peoles);
-        for (ProjectPepole projectPepole : peoles) {
-            System.out.println(projectPepole.getName());
-        }
     }
 }
