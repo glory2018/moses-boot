@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.mosesboot.documents.mapper.PlanTenderMapper">
+    <resultMap id="BaseResultMap" type="com.ibm.mosesboot.documents.entity.PlanTender">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="template_name" jdbcType="VARCHAR" property="templateName"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="location_prex" jdbcType="VARCHAR" property="locationPrex"/>
+        <result column="parent" jdbcType="VARCHAR" property="parent"/>
+        <result column="next_part_id" jdbcType="VARCHAR" property="nextPartId"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ibm.mosesboot.documents.entity.PlanTender">
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, template_name, title, location_prex, parent, next_part_id
+    </sql>
+    <sql id="Blob_Column_List">
+        content
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from plan_tender
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from plan_tender
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.ibm.mosesboot.documents.entity.PlanTender">
+        insert into plan_tender (id, template_name, title,
+                                 location_prex, parent, next_part_id,
+                                 content)
+        values (#{id,jdbcType=INTEGER}, #{templateName,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},
+                #{locationPrex,jdbcType=VARCHAR}, #{parent,jdbcType=VARCHAR}, #{nextPartId,jdbcType=VARCHAR},
+                #{content,jdbcType=LONGVARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.ibm.mosesboot.documents.entity.PlanTender">
+        insert into plan_tender
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="templateName != null">
+                template_name,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="locationPrex != null">
+                location_prex,
+            </if>
+            <if test="parent != null">
+                parent,
+            </if>
+            <if test="nextPartId != null">
+                next_part_id,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="templateName != null">
+                #{templateName,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="locationPrex != null">
+                #{locationPrex,jdbcType=VARCHAR},
+            </if>
+            <if test="parent != null">
+                #{parent,jdbcType=VARCHAR},
+            </if>
+            <if test="nextPartId != null">
+                #{nextPartId,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ibm.mosesboot.documents.entity.PlanTender">
+        update plan_tender
+        <set>
+            <if test="templateName != null">
+                template_name = #{templateName,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="locationPrex != null">
+                location_prex = #{locationPrex,jdbcType=VARCHAR},
+            </if>
+            <if test="parent != null">
+                parent = #{parent,jdbcType=VARCHAR},
+            </if>
+            <if test="nextPartId != null">
+                next_part_id = #{nextPartId,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ibm.mosesboot.documents.entity.PlanTender">
+        update plan_tender
+        set template_name = #{templateName,jdbcType=VARCHAR},
+            title         = #{title,jdbcType=VARCHAR},
+            location_prex = #{locationPrex,jdbcType=VARCHAR},
+            parent        = #{parent,jdbcType=VARCHAR},
+            next_part_id  = #{nextPartId,jdbcType=VARCHAR},
+            content       = #{content,jdbcType=LONGVARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ibm.mosesboot.documents.entity.PlanTender">
+        update plan_tender
+        set template_name = #{templateName,jdbcType=VARCHAR},
+            title         = #{title,jdbcType=VARCHAR},
+            location_prex = #{locationPrex,jdbcType=VARCHAR},
+            parent        = #{parent,jdbcType=VARCHAR},
+            next_part_id  = #{nextPartId,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
