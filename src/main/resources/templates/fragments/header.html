@@ -8,15 +8,30 @@
 </head>
 <body>
 <div th:fragment="header">
-    <div class="container" id="header">
-        <h1>Spring Boot + Thymeleaf + Spring Security</h1>
+    <div>
+        <h1>王者归来</h1>
         <!-- this is header -->
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a class="navbar-brand" th:href="@{/}">Home</a></li>
-                <li class="breadcrumb-item"><a class="navbar-brand" th:href="@{/moses}">Moses</a></li>
-                <li class="breadcrumb-item"><a class="navbar-brand" th:href="@{/documents}">Documents</a></li>
-            </ol>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/home}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/moses}">Moses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/documents}">Documents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
         </nav>
     </div>
 </div>

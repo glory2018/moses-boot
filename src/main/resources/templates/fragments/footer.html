@@ -3,17 +3,15 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
 <div th:fragment="footer">
-    <div class="container" id="footer">
-        <footer>
-            <!-- this is footer -->
-            © 2019 bjfansr@cn.ibm.com
-            <span sec:authorize="isAuthenticated()">
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        <!-- this is footer -->
+        © 2019 bjfansr@cn.ibm.com
+        <span sec:authorize="isAuthenticated()">
                 | Logged user: <span sec:authentication="name"></span> |
                 Roles: <span sec:authentication="principal.authorities"></span> |
-                <a th:href="@{/logout}">Logout</a>
-            </span>
-        </footer>
-    </div>
+            <a class="navbar-brand" th:href="@{/logout}">Logout</a>
+        </span>
+    </nav>
 </div>
 </body>
 </html>

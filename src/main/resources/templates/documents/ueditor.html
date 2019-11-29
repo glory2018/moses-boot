@@ -44,16 +44,30 @@
 <div class="container">
     <div class="starter-template">
         <h1>文档导出</h1>
-        <div>id<input id="id" value="1"></input></div>
-        <div>title<input id="title" value="test"></input></div>
+        <div class="btn-toolbar mb-3" role="toolbar" >
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">id</span>
+                </div>
+                <input type="text" class="form-control" placeholder="id" aria-label="id">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">title</span>
+                </div>
+                <input type="text" class="form-control" placeholder="title" aria-label="title">
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary" onclick="save()">保存</button>
+                <button type="button" class="btn btn-secondary" onclick="ftlExport()">导出</button>
+                <button type="button" class="btn btn-secondary" onclick="downloadFile()">下载</button>
+            </div>
+        </div>
         <div>
             <script id="editor" type="text/plain" style="width:800px;height:300px;"></script>
         </div>
-
-        <div id="btns">
-            <button onclick="save()">保存</button>
-            <button onclick="ftlExport()">导出</button>
-            <button onclick="downloadFile()">下载</button>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="aa" aria-label="aa">
         </div>
     </div>
 </div>
