@@ -11,6 +11,7 @@
         //实例化编辑器
         //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
         var ue = UE.getEditor('editor');
+
         function save() {
             var content = ue.getContent();
             var param = {
@@ -28,20 +29,17 @@
             })
         }
 
-        function ftlExport() {
-            window.open("/ueditor/ftlExport/1");
+        function exportPlanTender() {
+            window.open("/tender/exportPlanTender/1");
         }
 
-        function downloadFile() {
-            window.open("/ueditor/downloadFile");
-        }
     </script>
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
 <div class="container">
     <div class="starter-template">
-        <h1>文档导出</h1>
+        <h1>招标文档导出</h1>
         <div class="btn-toolbar mb-3" role="toolbar">
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -56,13 +54,17 @@
                 <input type="text" class="form-control" placeholder="title" aria-label="title" value="test" id="title">
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-secondary" onclick="save()">保存</button>
-                <button type="button" class="btn btn-secondary" onclick="ftlExport()">导出</button>
-                <button type="button" class="btn btn-secondary" onclick="downloadFile()">下载</button>
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-secondary" onclick="save()">保存</button>
+                </div>
+                <button type="button" class="btn btn-secondary" onclick="exportPlanTender()">导出招标方案</button>
             </div>
         </div>
         <div>
             <script id="editor" type="text/plain" style="width:800px;height:300px;"></script>
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="aa" aria-label="aa">
         </div>
     </div>
 </div>

@@ -4,16 +4,14 @@
     <resultMap id="BaseResultMap" type="com.ibm.mosesboot.documents.entity.PlanTender">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="template_name" jdbcType="VARCHAR" property="templateName"/>
-        <result column="title" jdbcType="VARCHAR" property="title"/>
         <result column="location_prex" jdbcType="VARCHAR" property="locationPrex"/>
-        <result column="parent" jdbcType="VARCHAR" property="parent"/>
         <result column="next_part_id" jdbcType="VARCHAR" property="nextPartId"/>
     </resultMap>
     <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ibm.mosesboot.documents.entity.PlanTender">
         <result column="content" jdbcType="LONGVARCHAR" property="content"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id, template_name, title, location_prex, parent, next_part_id
+        id, template_name,  location_prex,  next_part_id
     </sql>
     <sql id="Blob_Column_List">
         content
@@ -32,11 +30,11 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="insert" parameterType="com.ibm.mosesboot.documents.entity.PlanTender">
-        insert into plan_tender (id, template_name, title,
-                                 location_prex, parent, next_part_id,
+        insert into plan_tender (id, template_name,
+                                 location_prex,  next_part_id,
                                  content)
-        values (#{id,jdbcType=INTEGER}, #{templateName,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},
-                #{locationPrex,jdbcType=VARCHAR}, #{parent,jdbcType=VARCHAR}, #{nextPartId,jdbcType=VARCHAR},
+        values (#{id,jdbcType=INTEGER}, #{templateName,jdbcType=VARCHAR},
+                #{locationPrex,jdbcType=VARCHAR},  #{nextPartId,jdbcType=VARCHAR},
                 #{content,jdbcType=LONGVARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="com.ibm.mosesboot.documents.entity.PlanTender">
@@ -48,15 +46,11 @@
             <if test="templateName != null">
                 template_name,
             </if>
-            <if test="title != null">
-                title,
-            </if>
+
             <if test="locationPrex != null">
                 location_prex,
             </if>
-            <if test="parent != null">
-                parent,
-            </if>
+
             <if test="nextPartId != null">
                 next_part_id,
             </if>
@@ -71,15 +65,11 @@
             <if test="templateName != null">
                 #{templateName,jdbcType=VARCHAR},
             </if>
-            <if test="title != null">
-                #{title,jdbcType=VARCHAR},
-            </if>
+
             <if test="locationPrex != null">
                 #{locationPrex,jdbcType=VARCHAR},
             </if>
-            <if test="parent != null">
-                #{parent,jdbcType=VARCHAR},
-            </if>
+
             <if test="nextPartId != null">
                 #{nextPartId,jdbcType=VARCHAR},
             </if>
@@ -94,15 +84,11 @@
             <if test="templateName != null">
                 template_name = #{templateName,jdbcType=VARCHAR},
             </if>
-            <if test="title != null">
-                title = #{title,jdbcType=VARCHAR},
-            </if>
+
             <if test="locationPrex != null">
                 location_prex = #{locationPrex,jdbcType=VARCHAR},
             </if>
-            <if test="parent != null">
-                parent = #{parent,jdbcType=VARCHAR},
-            </if>
+
             <if test="nextPartId != null">
                 next_part_id = #{nextPartId,jdbcType=VARCHAR},
             </if>
@@ -115,9 +101,7 @@
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ibm.mosesboot.documents.entity.PlanTender">
         update plan_tender
         set template_name = #{templateName,jdbcType=VARCHAR},
-            title         = #{title,jdbcType=VARCHAR},
             location_prex = #{locationPrex,jdbcType=VARCHAR},
-            parent        = #{parent,jdbcType=VARCHAR},
             next_part_id  = #{nextPartId,jdbcType=VARCHAR},
             content       = #{content,jdbcType=LONGVARCHAR}
         where id = #{id,jdbcType=INTEGER}
@@ -125,9 +109,7 @@
     <update id="updateByPrimaryKey" parameterType="com.ibm.mosesboot.documents.entity.PlanTender">
         update plan_tender
         set template_name = #{templateName,jdbcType=VARCHAR},
-            title         = #{title,jdbcType=VARCHAR},
             location_prex = #{locationPrex,jdbcType=VARCHAR},
-            parent        = #{parent,jdbcType=VARCHAR},
             next_part_id  = #{nextPartId,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
