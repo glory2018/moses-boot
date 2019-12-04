@@ -23,19 +23,19 @@ public class ClientExample {
         //创建富文本
         StringBuilder sb = new StringBuilder();
         sb.append("<div>");
-        sb.append("<img style='height:100px;width:200px;display:block;' src='D:\\2.png' />");
+        sb.append("<img style='height:100px;width:200px;display:block;' src='D:\\temp\\1.png' />");
         sb.append("</br><span>wesley 演示 导出富文本！@@#######￥￥%%%%………………&&&**~~~~~~&&&&&&&&、、、、、、、、</span>");
         sb.append("</br><span>----多图分割线---</span>");
-        sb.append("</br><img style='height:100px;width:200px;display:block;' src='D:\\1.png' />");
+        sb.append("</br><img style='height:100px;width:200px;display:block;' src='D:\\temp\\2.png' />");
         sb.append("</br><span>中国梦，幸福梦！</span>");
         sb.append("</div>");
         RichObject richObject = new RichObject();
         richObject.setHtml(sb.toString());
         //--------------------此处可以spring配置文件配置，也可以直接读取属性文件获取------------------
         //从mht文件中找
-        richObject.setDocSrcLocationPrex("file:///C:/268D4AA4");
-        richObject.setDocSrcParent("word.files");
-        richObject.setNextPartId("01D2C8DD.BC13AF60");
+        richObject.setDocSrcLocationPrex("file:///C:/268BA2D4");
+        richObject.setDocSrcParent("test.files");
+        richObject.setNextPartId("01D5AADE.67ACB0D0");
         richObject.setShapeidPrex("_x56fe__x7247__x0020");
         richObject.setTypeid("#_x0000_t75");
         richObject.setSpidPrex("_x0000_i");
@@ -48,19 +48,13 @@ public class ClientExample {
         logger.debug("------imagesXmlHrefString-------" + WordGeneratorWithFreemarker.getXmlImgHref(richHtmlHandlerList));
         data.put("imagesBase64String", WordGeneratorWithFreemarker.getImagesBase64String(richHtmlHandlerList));
         logger.debug("------imagesBase64String-------" + WordGeneratorWithFreemarker.getImagesBase64String(richHtmlHandlerList));
-        data.put("name", "wesley");
-        data.put("datetime", "2017-05-10");
+        data.put("projectCode", "1234");
         data.put("title", "演示demo");
-        data.put("context1", richHtmlHandler.getHandledDocBodyBlock());
-        data.put("context2", richHtmlHandler.getHandledDocBodyBlock());
-        data.put("context3", richHtmlHandler.getHandledDocBodyBlock());
-        data.put("context4", richHtmlHandler.getHandledDocBodyBlock());
-        data.put("context5", richHtmlHandler.getHandledDocBodyBlock());
-        data.put("context6", richHtmlHandler.getHandledDocBodyBlock());
-        String docFilePath = "D:\\temp_by_wesley.doc";
+        data.put("list", richHtmlHandler.getHandledDocBodyBlock());
+        String docFilePath = "D:\\test.doc";
         String templatePath = Class.class.getResource("/ftl").getPath();
         templatePath = java.net.URLDecoder.decode(templatePath, "utf-8");//这里我的路径有空格添加此处理
         logger.debug("------templatePath-------" + templatePath);
-        WordGeneratorWithFreemarker.createDoc(templatePath, "word.ftl", data, docFilePath);
+        WordGeneratorWithFreemarker.createDoc(templatePath, "test.ftl", data, docFilePath);
     }
 }

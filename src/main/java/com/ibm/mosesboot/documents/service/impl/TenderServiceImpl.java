@@ -66,17 +66,6 @@ public class TenderServiceImpl implements TenderService {
         HashMap<String, Object> data = new HashMap<String, Object>();
         data.put("projectCode", "200000000002168");
         data.put("dateYear", "2019");
-        data.put("projectName", "开发测试-自动选流程-大于500万");
-        data.put("projectType", "汇报");
-        data.put("projectSign", "采购共享服务中心");
-        data.put("dateDayCN", DateUtil.getDate("yyyy年MM月dd日"));
-        data.put("dept", "开发部");
-        data.put("procurementContents", "xxx");
-        data.put("procurementScale", "xxx");
-        data.put("procurementAmount", "700");
-        data.put("firstPurchase", "xx");
-        data.put("procurementMode", "公开招标-资格预审");
-        data.put("pretrialMethod", "xx");
         data.put("evaluationMethod", "xx");
         data.put("bidDivision", "xx");
         data.put("evaluationWeight", "xx");

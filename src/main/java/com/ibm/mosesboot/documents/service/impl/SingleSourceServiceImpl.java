@@ -47,7 +47,7 @@ public class SingleSourceServiceImpl implements SingleSourceService {
         TemplateConfig templateConfig = templateConfigService.selectByPrimaryKey(tmplId);
         String templateName = templateConfig.getTemplateName();
         SingleSource singleSource = singleSourceMapper.selectByPrimaryKey("98C881BBCAA75AC6E0530300A8C02C6D");
-        data.put("purchaseBasisList", getRichContent(templateConfig,singleSource.getRichContent()));
+        data.put("purchaseBasisList", getRichContent(templateConfig, singleSource.getRichContent()));
         String templatePath = Class.class.getResource("/ftl").getPath();
         templatePath = java.net.URLDecoder.decode(templatePath, "utf-8");
         logger.debug("------templatePath-------" + templatePath);
@@ -81,9 +81,8 @@ public class SingleSourceServiceImpl implements SingleSourceService {
         data.put("supportUnit", "xx");
         data.put("serviceUnit", "xx");
         data.put("completionTime", "2019年12月");
-        data.put("reason", "<p>    \t    本项目符合《中国移动通信集团有限公司采购实施管理办法》中规定的10种单一来源采购场景中XXXXXXXXX场景要求，与XXXX公司进行谈判。 &nbsp; \n" +
-                "如果是特殊场景，请说明采用单一来源谈判方式的原因及需求审批层级。\n" +
-                "</p>");
+        data.put("reason", "<p> \t 本项目符合《中国移动通信集团有限公司采购实施管理办法》中规定的10种单一来源采购场景中XXXXXXXXX场景要求，与XXXX公司进行谈判。 &nbsp; \n" +
+                "如果是特殊场景，请说明采用单一来源谈判方式的原因及需求审批层级。\n</p>");
         return data;
     }
 
