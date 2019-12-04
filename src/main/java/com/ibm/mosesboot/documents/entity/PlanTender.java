@@ -1,6 +1,6 @@
 package com.ibm.mosesboot.documents.entity;
 
-public class PlanTender extends BaseEntity {
+public class PlanTender {
     /**
      * 项目编号
      */

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" href="/js/bootstrap-4.3.1/css/bootstrap.min.css">
+    <script charset="utf-8" src="/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        function exportPlanTender() {
+            window.open("/singleSource/export?tmplId=" + $("#templateId").val() + "&prjId=" + $("#projectId").val());
+        }
+    </script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="starter-template">
+        <h1>单一来源</h1>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">templateId</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="templateId" placeholder="templateId" value="98B79CDD2F190CF7E0530300A8C0A64C">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">projectId</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="projectId" placeholder="projectId" value="200000000002168">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-secondary" onclick="exportPlanTender()">导出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

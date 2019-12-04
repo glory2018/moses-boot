@@ -5,10 +5,11 @@
  */
 package com.ibm.mosesboot.documents.service.impl;
 
+import com.ibm.mosesboot.documents.entity.SingleSource;
 import com.ibm.mosesboot.documents.entity.TemplateConfig;
-import com.ibm.mosesboot.documents.mapper.PlanTenderMapper;
+import com.ibm.mosesboot.documents.mapper.SingleSourceMapper;
+import com.ibm.mosesboot.documents.service.SingleSourceService;
 import com.ibm.mosesboot.documents.service.TemplateConfigService;
-import com.ibm.mosesboot.documents.service.TenderService;
 import com.ibm.mosesboot.documents.util.DateUtil;
 import com.ibm.mosesboot.freemarker.RichHtmlHandler;
 import com.ibm.mosesboot.freemarker.WordGeneratorWithFreemarker;
@@ -30,13 +31,13 @@ import java.util.Map;
  * @author Moses
  * @date 2019/7/28
  */
-@Service("tenderService")
-public class TenderServiceImpl implements TenderService {
-    private static final Logger logger = LoggerFactory.getLogger(TenderServiceImpl.class);
+@Service("singleSourceService")
+public class SingleSourceServiceImpl implements SingleSourceService {
+    private static final Logger logger = LoggerFactory.getLogger(SingleSourceServiceImpl.class);
     @Autowired
     private TemplateConfigService templateConfigService;
     @Resource
-    PlanTenderMapper planTenderMapper;
+    SingleSourceMapper singleSourceMapper;
 
     @Override
     public void export(HttpServletRequest request, HttpServletResponse response, String tmplId, String prjId) throws Exception {
@@ -45,7 +46,8 @@ public class TenderServiceImpl implements TenderService {
         //
         TemplateConfig templateConfig = templateConfigService.selectByPrimaryKey(tmplId);
         String templateName = templateConfig.getTemplateName();
-//        getRichContent(templateConfig,"");
+        SingleSource singleSource = singleSourceMapper.selectByPrimaryKey("98C881BBCAA75AC6E0530300A8C02C6D");
+        data.put("purchaseBasisList", getRichContent(templateConfig,singleSource.getRichContent()));
         String templatePath = Class.class.getResource("/ftl").getPath();
         templatePath = java.net.URLDecoder.decode(templatePath, "utf-8");
         logger.debug("------templatePath-------" + templatePath);
@@ -62,29 +64,26 @@ public class TenderServiceImpl implements TenderService {
     }
 
     private HashMap<String, Object> getData(String projectId) {
-        Map map = planTenderMapper.getProjectInfo(projectId);
+        Map map = singleSourceMapper.getProjectInfo(projectId);
         HashMap<String, Object> data = new HashMap<String, Object>();
-        data.put("projectCode", "200000000002168");
-        data.put("dateYear", "2019");
-        data.put("projectName", "开发测试-自动选流程-大于500万");
-        data.put("projectType", "汇报");
-        data.put("projectSign", "采购共享服务中心");
-        data.put("dateDayCN", DateUtil.getDate("yyyy年MM月dd日"));
-        data.put("dept", "开发部");
-        data.put("procurementContents", "xxx");
-        data.put("procurementScale", "xxx");
-        data.put("procurementAmount", "700");
-        data.put("firstPurchase", "xx");
-        data.put("procurementMode", "公开招标-资格预审");
-        data.put("pretrialMethod", "xx");
-        data.put("evaluationMethod", "xx");
-        data.put("bidDivision", "xx");
-        data.put("evaluationWeight", "xx");
-        data.put("suppliersNumber", "xx");
-        data.put("winningNumber", "xx");
-        data.put("biddingAgency", "xx");
+        data.put("projectCode", "100000000014711");
+        data.put("title", "关于中国移动2019年至2020年XX设\r备/产品/服务集中采购方案的汇报");
+        data.put("signDept", "采购共享服务中心");
+        data.put("signDate", DateUtil.getDate("yyyy年MM月dd日"));
+        data.put("dept", "采集一部");
+        data.put("about", "xxx");
+        data.put("projectName", "测试单一来源1");
+        data.put("procurementContents", "xxxxx");
+        data.put("procurementScale", "xx");
+        data.put("procurementAmount", "21,321");
+        data.put("firstPurchase", "是");
+        data.put("suppliersName", "xxx");
+        data.put("supportUnit", "xx");
         data.put("serviceUnit", "xx");
         data.put("completionTime", "2019年12月");
+        data.put("reason", "<p>    \t    本项目符合《中国移动通信集团有限公司采购实施管理办法》中规定的10种单一来源采购场景中XXXXXXXXX场景要求，与XXXX公司进行谈判。 &nbsp; \n" +
+                "如果是特殊场景，请说明采用单一来源谈判方式的原因及需求审批层级。\n" +
+                "</p>");
         return data;
     }
 

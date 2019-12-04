@@ -12,6 +12,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author Moses
  * @date 2019/11/29
  */
-public interface TenderService {
+public interface SingleSourceService {
     void export(HttpServletRequest request, HttpServletResponse response, String tmplId, String prjId) throws Exception;
 }

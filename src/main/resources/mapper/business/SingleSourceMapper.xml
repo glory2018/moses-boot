@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibm.mosesboot.documents.mapper.SingleSourceMapper">
+  <resultMap id="BaseResultMap" type="com.ibm.mosesboot.documents.entity.SingleSource">
+    <id column="RICH_ID" jdbcType="VARCHAR" property="richId" />
+    <result column="RICH_NAME" jdbcType="VARCHAR" property="richName" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ibm.mosesboot.documents.entity.SingleSource">
+    <result column="RICH_CONTENT" jdbcType="CLOB" property="richContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RICH_ID, RICH_NAME
+  </sql>
+  <sql id="Blob_Column_List">
+    RICH_CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from T_PRO_DOC_SINGLE_SOURCE
+    where RICH_ID = #{richId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from T_PRO_DOC_SINGLE_SOURCE
+    where RICH_ID = #{richId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ibm.mosesboot.documents.entity.SingleSource">
+    insert into T_PRO_DOC_SINGLE_SOURCE (RICH_ID, RICH_NAME, RICH_CONTENT
+      )
+    values (#{richId,jdbcType=VARCHAR}, #{richName,jdbcType=VARCHAR}, #{richContent,jdbcType=CLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ibm.mosesboot.documents.entity.SingleSource">
+    insert into T_PRO_DOC_SINGLE_SOURCE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="richId != null">
+        RICH_ID,
+      </if>
+      <if test="richName != null">
+        RICH_NAME,
+      </if>
+      <if test="richContent != null">
+        RICH_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="richId != null">
+        #{richId,jdbcType=VARCHAR},
+      </if>
+      <if test="richName != null">
+        #{richName,jdbcType=VARCHAR},
+      </if>
+      <if test="richContent != null">
+        #{richContent,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ibm.mosesboot.documents.entity.SingleSource">
+    update T_PRO_DOC_SINGLE_SOURCE
+    <set>
+      <if test="richName != null">
+        RICH_NAME = #{richName,jdbcType=VARCHAR},
+      </if>
+      <if test="richContent != null">
+        RICH_CONTENT = #{richContent,jdbcType=CLOB},
+      </if>
+    </set>
+    where RICH_ID = #{richId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ibm.mosesboot.documents.entity.SingleSource">
+    update T_PRO_DOC_SINGLE_SOURCE
+    set RICH_NAME = #{richName,jdbcType=VARCHAR},
+      RICH_CONTENT = #{richContent,jdbcType=CLOB}
+    where RICH_ID = #{richId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ibm.mosesboot.documents.entity.SingleSource">
+    update T_PRO_DOC_SINGLE_SOURCE
+    set RICH_NAME = #{richName,jdbcType=VARCHAR}
+    where RICH_ID = #{richId,jdbcType=VARCHAR}
+  </update>
+  <select id="getProjectInfo" parameterType="java.lang.String" resultType="map">
+    select
+      *
+    from T_PRO_DOC_TEMPLATE_CONFIG
+    where TEMPLATE_ID = #{templateId,jdbcType=VARCHAR}
+  </select>
+</mapper>

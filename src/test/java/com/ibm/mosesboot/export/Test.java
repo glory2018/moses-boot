@@ -45,7 +45,7 @@ public class Test {
         data.put("datetime", "2017-05-10");
         data.put("title", "演示demo");
         data.put("context", richHtmlHandler.getHandledDocBodyBlock());
-        String docFilePath = "D:\\temp\\招标方案.doc";
+        String docFilePath = "D:\\temp\\招标方案.html";
         String templatePath = Class.class.getResource("/ftl").getPath();
         templatePath = java.net.URLDecoder.decode(templatePath, "utf-8");//这里我的路径有空格添加此处理
         logger.debug("------templatePath-------" + templatePath);
