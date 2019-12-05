@@ -43,11 +43,12 @@
         </javaClientGenerator>
         <!-- 指定数据库表 -->
         <!--tableName:指定了表名 domainObjectName:指定了实体类的名称 -->
-        <table tableName="T_PRO_DOC_SINGLE_SOURCE" domainObjectName="SingleSource"
+        <table tableName="ztmm_pprjhdr" domainObjectName="AccrualProject"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
             <!-- 默认false:Camel Case,true:Snake Case-->
             <property name="useActualColumnNames" value="false"/>
+            <property name="runtimeSchema" value="&quot;SAPSR3&quot;" />
         </table>
     </context>
 </generatorConfiguration>
