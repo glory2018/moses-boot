@@ -5,7 +5,6 @@ import com.ibm.mosesboot.freemarker.util.UUIDUtils;
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -37,7 +36,6 @@ public class WordImageConvertor {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         //读取文件
         Base64 base64 = new Base64();
-        BASE64Encoder encoder = new BASE64Encoder();
         byte[] temp = new byte[1024];
         for (int len = input.read(temp); len != -1; len = input.read(temp)) {
             out.write(temp, 0, len);

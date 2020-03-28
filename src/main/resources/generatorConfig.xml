@@ -37,7 +37,8 @@
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
         <!-- targetPackage：mapper接口生成的位置 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ibm.mosesboot.documents.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ibm.mosesboot.documents.mapper"
+                             targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
@@ -48,7 +49,7 @@
                enableSelectByExample="false" selectByExampleQueryId="false">
             <!-- 默认false:Camel Case,true:Snake Case-->
             <property name="useActualColumnNames" value="false"/>
-            <property name="runtimeSchema" value="&quot;SAPSR3&quot;" />
+            <property name="runtimeSchema" value="&quot;SAPSR3&quot;"/>
         </table>
     </context>
 </generatorConfiguration>

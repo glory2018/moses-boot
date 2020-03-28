@@ -9,7 +9,6 @@ import com.ibm.mosesboot.documents.entity.TemplateConfig;
 import com.ibm.mosesboot.documents.mapper.PlanTenderMapper;
 import com.ibm.mosesboot.documents.service.TemplateConfigService;
 import com.ibm.mosesboot.documents.service.TenderService;
-import com.ibm.mosesboot.documents.util.DateUtil;
 import com.ibm.mosesboot.freemarker.RichHtmlHandler;
 import com.ibm.mosesboot.freemarker.WordGeneratorWithFreemarker;
 import com.ibm.mosesboot.freemarker.bean.RichObject;

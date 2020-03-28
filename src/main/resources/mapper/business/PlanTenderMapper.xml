@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ibm.mosesboot.documents.mapper.PlanTenderMapper">
-  <select id="getProjectInfo" parameterType="java.lang.String" resultType="map">
-    select 
-   *
-    from T_PRO_DOC_TEMPLATE_CONFIG
-    where TEMPLATE_ID = #{templateId,jdbcType=VARCHAR}
-  </select>
+    <select id="getProjectInfo" parameterType="java.lang.String" resultType="map">
+        select *
+        from T_PRO_DOC_TEMPLATE_CONFIG
+        where TEMPLATE_ID = #{templateId,jdbcType=VARCHAR}
+    </select>
 </mapper>

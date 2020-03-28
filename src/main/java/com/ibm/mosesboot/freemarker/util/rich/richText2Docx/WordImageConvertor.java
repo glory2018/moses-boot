@@ -8,7 +8,6 @@ import org.docx4j.wml.Drawing;
 import org.docx4j.wml.ObjectFactory;
 import org.docx4j.wml.P;
 import org.docx4j.wml.R;
-import sun.misc.BASE64Encoder;
 
 import java.io.*;
 import java.util.List;
@@ -43,7 +42,6 @@ public class WordImageConvertor {
         FileInputStream input = new FileInputStream(file);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         //读取文件
-        BASE64Encoder encoder = new BASE64Encoder();
         byte[] temp = new byte[1024];
         for (int len = input.read(temp); len != -1; len = input.read(temp)) {
             out.write(temp, 0, len);

@@ -1,5 +1,5 @@
 # moses-boot
-springboot2.1.1+thymeleaf+mybatis plus
+springboot2.2.6+thymeleaf+mybatis plus
 
 https://github.com/glory2018/moses-boot.git
 
