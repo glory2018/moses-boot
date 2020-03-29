@@ -22,7 +22,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- targetProject:生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.ibm.mosesboot.documents.entity" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.ibm.mosesboot.export.entity" targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
             <!-- 从数据库返回的值被清理前后的空格 -->
@@ -37,7 +37,7 @@
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
         <!-- targetPackage：mapper接口生成的位置 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ibm.mosesboot.documents.mapper"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ibm.mosesboot.export.mapper"
                              targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>

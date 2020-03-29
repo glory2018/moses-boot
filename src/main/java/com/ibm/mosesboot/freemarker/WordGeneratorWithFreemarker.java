@@ -42,10 +42,9 @@ public class WordGeneratorWithFreemarker {
      */
     public static void createDoc(String templatePath, String templateName, Map<String, Object> dataMap, HttpServletResponse response) throws Exception {
         logger.debug("WordGeneratorWithFreemarker createDoc()");
-        String fileName = "招标方案";
         OutputStream out = response.getOutputStream();
         response.reset();
-        response.addHeader("Content-Disposition", "attachment;filename=" + fileName + ".doc");
+        response.addHeader("Content-Disposition", "attachment;filename=test.doc");
         Freemarker.fprint(templatePath, templateName, dataMap, response.getOutputStream());
         out.flush();
         out.close();
@@ -79,7 +78,6 @@ public class WordGeneratorWithFreemarker {
                 }
             }
         }
-        logger.debug("WordGeneratorWithFreemarker getImagesBase64String() result:" + imagesBase64String);
         return imagesBase64String;
     }
 
@@ -99,7 +97,6 @@ public class WordGeneratorWithFreemarker {
                 }
             }
         }
-        logger.debug("WordGeneratorWithFreemarker getXmlImgHref() result:" + xmlImgHref);
         return xmlImgHref;
     }
 }

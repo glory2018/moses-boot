@@ -10,12 +10,26 @@
     <script type="text/javascript">
         //实例化编辑器
         //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-        var ue = UE.getEditor('editor');
+        var content = UE.getEditor('content');
+        var note = UE.getEditor('note');
 
+        $(function(){
+            var noteData = "[[${ueditor.note}]]";
+            note.ready(function() {
+                note.setContent(noteData, false);
+            });
+            var contentData = "[[${ueditor.content}]]";
+            content.ready(function() {
+                content.setContent(contentData, false);
+            });
+        });
         function save() {
-            var content = ue.getContent();
             var param = {
-                "title": $("#title").val(), "content": content, "id": $("#id").val()
+                "id": $("#id").val(),
+                "templateId": $("#templateId").val(),
+                "title": $("#title").val(),
+                "note": note.getContent(),
+                "content": content.getContent()
             };
             $.ajax({
                 url: "/ueditor/save",
@@ -30,7 +44,7 @@
         }
 
         function ftlExport() {
-            window.open("/ueditor/ftlExport/1");
+            window.open("/ueditor/ftlExport/" + $("#id").val());
         }
 
         function downloadFile() {
@@ -41,29 +55,38 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 <div class="container">
-    <div class="starter-template">
-        <h1>文档导出</h1>
-        <div class="btn-toolbar mb-3" role="toolbar">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">id</span>
-                </div>
-                <input type="text" class="form-control" placeholder="id" aria-label="id" value="1" id="id">
-            </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">title</span>
-                </div>
-                <input type="text" class="form-control" placeholder="title" aria-label="title" value="test" id="title">
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary" onclick="save()">保存</button>
-                <button type="button" class="btn btn-secondary" onclick="ftlExport()">导出</button>
-                <button type="button" class="btn btn-secondary" onclick="downloadFile()">下载</button>
-            </div>
+    <h1>文档导出</h1>
+    <button type="button" class="btn btn-lg btn-primary" onclick="save()">保存</button>
+    <button type="button" class="btn btn-lg btn-primary" onclick="ftlExport()">导出</button>
+    <button type="button" class="btn btn-lg btn-primary" onclick="downloadFile()">下载</button>
+    <div class="form-group row">
+        <label for="templateId" class="col-sm-2 col-form-label">模板ID：</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="templateId" th:value="${ueditor.templateId}">
         </div>
-        <div>
-            <script id="editor" type="text/plain" style="width:800px;height:300px;"></script>
+    </div>
+    <div class="form-group row">
+        <label for="id" class="col-sm-2 col-form-label">ID：</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="id" th:value="${ueditor.id}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label">标题：</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="title" th:value="${ueditor.title}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="note" class="col-sm-2 col-form-label">注释：</label>
+        <div class="col-sm-10">
+            <script id="note" type="text/plain" style="width:800px;height:100px;"></script>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="content" class="col-sm-2 col-form-label">内容：</label>
+        <div class="col-sm-10">
+            <script id="content" type="text/plain" style="width:800px;height:200px;"></script>
         </div>
     </div>
 </div>

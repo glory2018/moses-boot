@@ -13,7 +13,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties("storage")
 public class StorageProperties {
-    private String location = "D:\\ibm\\Full Stack Developer\\assignment\\moses-boot\\src\\main\\resources\\upload-files";
+    private String location = "C:\\\\Project\\\\Moses\\\\moses-boot\\\\src\\\\main\\\\resources\\upload-files";
 
     public String getLocation() {
         return location;
