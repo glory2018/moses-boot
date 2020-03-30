@@ -32,10 +32,14 @@ public class UeditorController {
         return "/documents/ueditor";
     }
 
-    @PostMapping("/save")
-    public String save(@RequestBody(required = false) Ueditor ueditor) {
-        ueditorService.save(ueditor);
+    @GetMapping("/demo")
+    public String demo(Model model) {
         return "/documents/demo";
+    }
+
+    @PostMapping("/save")
+    public void save(@RequestBody(required = false) Ueditor ueditor) {
+        ueditorService.save(ueditor);
     }
 
     @RequestMapping("/ftlExport/{id}")

@@ -24,7 +24,7 @@ spring:
     multipart:
       max-request-size: 10MB
       max-file-size: 10MB
-#  页面缓存
+  #开发配置为false,避免修改模板还要重启服务器
   thymeleaf:
     cache: false
   devtools:
