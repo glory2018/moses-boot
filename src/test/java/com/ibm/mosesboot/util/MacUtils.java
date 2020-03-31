@@ -15,7 +15,6 @@ import java.io.InputStreamReader;
  * @version 2013-12-21
  */
 public class MacUtils {
-
     /**
      * 获取当前操作系统名称. return 操作系统名称 例如:windows,Linux,Unix等.
      */
@@ -69,7 +68,6 @@ public class MacUtils {
             bufferedReader = null;
             process = null;
         }
-
         return mac;
     }
 
@@ -116,12 +114,10 @@ public class MacUtils {
             bufferedReader = null;
             process = null;
         }
-
         // 取不到，试下Unix取发
         if (mac == null) {
             return getUnixMACAddress();
         }
-
         return mac;
     }
 
@@ -183,7 +179,6 @@ public class MacUtils {
             bufferedReader = null;
             process = null;
         }
-
         return mac;
     }
 
@@ -203,8 +198,7 @@ public class MacUtils {
     /**
      * 测试用的main方法.
      *
-     * @param argc
-     *            运行参数.
+     * @param argc 运行参数.
      */
     public static void main(String[] argc) {
         String os = getOSName();
@@ -220,5 +214,4 @@ public class MacUtils {
             System.out.println("mac: " + mac);
         }
     }
-
 }

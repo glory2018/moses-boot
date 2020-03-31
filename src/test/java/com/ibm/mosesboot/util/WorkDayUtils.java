@@ -5,12 +5,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class WorkDayUtils {
-
     public static void main(String[] args) {
         try {
             String strDateStart = "2013-08-01";
             String strDateEnd = "2014-08-31";
-
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date date_start = sdf.parse(strDateStart);
             Date date_end = sdf.parse(strDateEnd);
@@ -102,7 +100,7 @@ public class WorkDayUtils {
      * @return
      */
     public String getChineseWeek(Calendar date) {
-        final String dayNames[] = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
+        final String dayNames[] = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
         int dayOfWeek = date.get(Calendar.DAY_OF_WEEK);
         // System.out.println(dayNames[dayOfWeek - 1]);
         return dayNames[dayOfWeek - 1];
@@ -134,5 +132,4 @@ public class WorkDayUtils {
     public int getHolidays(Calendar d1, Calendar d2) {
         return getDaysBetween(d1, d2) - getWorkingDay(d1, d2);
     }
-
 }

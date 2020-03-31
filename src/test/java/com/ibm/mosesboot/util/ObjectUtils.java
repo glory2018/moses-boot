@@ -4,23 +4,18 @@
  */
 package com.ibm.mosesboot.util;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.cglib.beans.BeanMap;
-
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.cglib.beans.BeanMap;
+
+import java.io.*;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 对象操作工具类, 继承org.apache.commons.lang3.ObjectUtils类
@@ -29,7 +24,6 @@ import com.google.common.collect.Maps;
  * @version 2014-6-29
  */
 public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
-
     /**
      * 注解到对象复制，只复制能匹配上的方法。
      *
@@ -103,7 +97,7 @@ public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 
     /**
      * 将对象装换为map
-     * 
+     *
      * @param bean
      * @return
      */
@@ -120,7 +114,7 @@ public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 
     /**
      * 将map装换为javabean对象
-     * 
+     *
      * @param map
      * @param bean
      * @return
@@ -133,7 +127,7 @@ public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 
     /**
      * 将List<T>转换为List<Map<String, Object>>
-     * 
+     *
      * @param objList
      * @return
      * @throws JsonGenerationException
@@ -156,7 +150,7 @@ public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 
     /**
      * 将List<Map<String,Object>>转换为List<T>
-     * 
+     *
      * @param maps
      * @param clazz
      * @return
@@ -181,17 +175,14 @@ public class ObjectUtils extends org.apache.commons.lang3.ObjectUtils {
 
     /**
      * list集合中某两个字段作为键值对map处理
-     * 
-     * @param list
-     *            集合
-     * @param key
-     *            做为键的字段
-     * @param value
-     *            作为值得对象
+     *
+     * @param list  集合
+     * @param key   做为键的字段
+     * @param value 作为值得对象
      * @return
      */
     public static Map<String, Object> listToMap(List<Map<String, Object>> list, String key,
-            String Value) {
+                                                String Value) {
         Map<String, Object> result = new HashMap<String, Object>();
         Map<String, Object> temp;
         for (int i = 0; i < list.size(); i++) {

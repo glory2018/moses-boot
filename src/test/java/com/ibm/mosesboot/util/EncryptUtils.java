@@ -8,8 +8,8 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * @author zhangxu-bj@fang.com
- *
- *         2017-11-02
+ * <p>
+ * 2017-11-02
  */
 public class EncryptUtils {
     public static String Encode(String str) {
@@ -34,7 +34,6 @@ public class EncryptUtils {
     }
 
     private static String GetRandomString() {
-
         int first = LocalDateTime.now().getSecond() / 10; // 0-5
         if (first == 0) {
             first = 3;
@@ -42,7 +41,6 @@ public class EncryptUtils {
         if (first == 1) {
             return "1";
         }
-
         return first + LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyy")).substring(0, first - 1);
     }
 
@@ -91,7 +89,6 @@ public class EncryptUtils {
                     intChar++;
                 }
             }
-
             sb.append((char) intChar);
         }
         return sb.toString();
@@ -110,7 +107,6 @@ public class EncryptUtils {
                     intChar--;
                 }
             }
-
             sb.append((char) intChar);
         }
         return sb.toString();
@@ -122,7 +118,5 @@ public class EncryptUtils {
     public static void main(String[] args) {
         String a = "CitymapSTD";
         System.out.println(Decode(Encode(a)));
-
     }
-
 }

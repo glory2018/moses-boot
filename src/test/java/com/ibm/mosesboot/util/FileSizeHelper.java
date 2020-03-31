@@ -33,7 +33,6 @@ public class FileSizeHelper {
         if (result != null) {
             return result;
         }
-
         result = getHumanReadableFileSize(fileSize, ONE_TB, "TB");
         if (result != null) {
             return result;
@@ -57,7 +56,6 @@ public class FileSizeHelper {
         if (fileSize == 0) {
             return "0";
         }
-
         if ((fileSize / unit) >= 1) {
             double value = fileSize / (double) unit;
             DecimalFormat df = new DecimalFormat("######.##" + unitName);

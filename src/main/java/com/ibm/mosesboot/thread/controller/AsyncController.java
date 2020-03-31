@@ -24,7 +24,7 @@ import java.util.concurrent.Future;
  * @date 2020/3/30
  */
 @Controller
-@RequestMapping("/api/v1")
+@RequestMapping("/async")
 public class AsyncController {
     private static final Logger logger = LoggerFactory.getLogger(AsyncController.class);
     @Autowired

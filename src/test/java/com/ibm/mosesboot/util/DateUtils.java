@@ -17,10 +17,9 @@ import java.util.*;
  * @version 2014-4-15
  */
 public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
-
-    private static String[] parsePatterns = { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss",
+    private static String[] parsePatterns = {"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss",
             "yyyy-MM-dd HH:mm", "yyyy-MM", "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm",
-            "yyyy/MM", "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm", "yyyy.MM" };
+            "yyyy/MM", "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm", "yyyy.MM"};
 
     /**
      * 得到当前日期字符串 格式（yyyy-MM-dd）
@@ -96,12 +95,12 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     /**
      * 几个月前的第一天
-     * 
+     *
+     * @param num
+     * @return
      * @Title: getLastMonth
      * @author fuchangmin@fang.com
      * @Description: TODO(功能)
-     * @param num
-     * @return
      */
     public static String getLastMonth(int num) {
         Calendar cal = Calendar.getInstance();
@@ -214,7 +213,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     /**
      * 年加减
-     * 
+     *
      * @param date
      * @param i
      * @return
@@ -228,7 +227,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     /**
      * 月加减
-     * 
+     *
      * @param date
      * @param i
      * @return
@@ -242,7 +241,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     /**
      * 得到月份第一天
-     * 
+     *
      * @param date
      * @return
      */
@@ -255,7 +254,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     /**
      * 得到月份最后一天
-     * 
+     *
      * @return
      */
     public static String getMonthLastDay(Date date) {
@@ -267,7 +266,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     /**
      * 根据开始时间和结束时间返回时间段内的时间集合
-     * 
+     *
      * @param beginDate
      * @param endDate
      * @return List

@@ -13,24 +13,20 @@ public class LatLonUtil {
     /// <param name="raidus">半径(米)</param>
     /// <returns></returns>
     public static double[] GetAround(double lat, double lon, int raidus) {
-
         Double latitude = lat;
         Double longitude = lon;
-
         Double degree = (24901 * 1609) / 360.0;
         double raidusMile = raidus;
-
         Double dpmLat = 1 / degree;
         Double radiusLat = dpmLat * raidusMile;
         Double minLat = latitude - radiusLat;
         Double maxLat = latitude + radiusLat;
-
         Double mpdLng = degree * Math.cos(latitude * (PI / 180));
         Double dpmLng = 1 / mpdLng;
         Double radiusLng = dpmLng * raidusMile;
         Double minLng = longitude - radiusLng;
         Double maxLng = longitude + radiusLng;
-        return new double[] { minLat, minLng, maxLat, maxLng };
+        return new double[]{minLat, minLng, maxLat, maxLng};
     }
 
     /// <summary>

@@ -4,37 +4,23 @@
  */
 package com.ibm.mosesboot.util;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 
 /**
- *
  * @author Andy.Chen
  * @mail Chenjunjun.ZJ@gmail.com
- *
  */
 public class StreamUtils {
-
     final static int BUFFER_SIZE = 4096;
 
     /**
      * 将InputStream转换成String
      *
-     * @param in
-     *            InputStream
+     * @param in InputStream
      * @return String
      * @throws Exception
-     *
      */
     public static String InputStreamTOString(InputStream in) {
-
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
         byte[] data = new byte[BUFFER_SIZE];
         String string = null;
@@ -46,7 +32,6 @@ public class StreamUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         data = null;
         try {
             string = new String(outStream.toByteArray(), "UTF-8");
@@ -76,7 +61,6 @@ public class StreamUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         data = null;
         try {
             string = new String(outStream.toByteArray(), encoding);
@@ -94,7 +78,6 @@ public class StreamUtils {
      * @throws Exception
      */
     public static InputStream StringTOInputStream(String in) throws Exception {
-
         ByteArrayInputStream is = new ByteArrayInputStream(in.getBytes("UTF-8"));
         return is;
     }
@@ -120,20 +103,17 @@ public class StreamUtils {
     /**
      * 将InputStream转换成byte数组
      *
-     * @param in
-     *            InputStream
+     * @param in InputStream
      * @return byte[]
      * @throws IOException
      */
     public static byte[] InputStreamTOByte(InputStream in) throws IOException {
-
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
         byte[] data = new byte[BUFFER_SIZE];
         int count = -1;
         while ((count = in.read(data, 0, BUFFER_SIZE)) != -1) {
             outStream.write(data, 0, count);
         }
-
         data = null;
         return outStream.toByteArray();
     }
@@ -146,7 +126,6 @@ public class StreamUtils {
      * @throws Exception
      */
     public static InputStream byteTOInputStream(byte[] in) throws Exception {
-
         ByteArrayInputStream is = new ByteArrayInputStream(in);
         return is;
     }
@@ -159,7 +138,6 @@ public class StreamUtils {
      * @throws Exception
      */
     public static String byteTOString(byte[] in) {
-
         String result = null;
         InputStream is = null;
         try {
@@ -179,7 +157,6 @@ public class StreamUtils {
      * @throws Exception
      */
     public static String getString(String in) {
-
         String is = null;
         try {
             is = byteTOString(StringTObyte(in));
@@ -191,21 +168,15 @@ public class StreamUtils {
 
     // InputStream 转换成byte[]
     public byte[] getBytes(InputStream is) throws IOException {
-
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         byte[] b = new byte[BUFFER_SIZE];
         int len = 0;
-
         while ((len = is.read(b, 0, BUFFER_SIZE)) != -1) {
             baos.write(b, 0, len);
         }
-
         baos.flush();
-
         byte[] bytes = baos.toByteArray();
-
         System.out.println(new String(bytes));
-
         return bytes;
     }
 
@@ -247,8 +218,7 @@ public class StreamUtils {
      * 根据文件对象创建文件输出流处理 以字节为单位（非 unicode ）
      *
      * @param file
-     * @param append
-     *            true:文件以追加方式打开,false:则覆盖原文件的内容
+     * @param append true:文件以追加方式打开,false:则覆盖原文件的内容
      * @return
      */
     public static FileOutputStream getFileOutputStream(File file, boolean append) {
@@ -266,8 +236,7 @@ public class StreamUtils {
      * 根据文件路径创建文件输出流处理 以字节为单位（非 unicode ）
      *
      * @param path
-     * @param append
-     *            true:文件以追加方式打开,false:则覆盖原文件的内容
+     * @param append true:文件以追加方式打开,false:则覆盖原文件的内容
      * @return
      */
     public static FileOutputStream getFileOutputStream(String filepath, boolean append) {
@@ -288,5 +257,4 @@ public class StreamUtils {
     public static ByteArrayOutputStream getByteArrayOutputStream() {
         return new ByteArrayOutputStream();
     }
-
 }

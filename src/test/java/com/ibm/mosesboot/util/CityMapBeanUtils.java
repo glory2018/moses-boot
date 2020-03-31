@@ -7,16 +7,15 @@ import java.util.List;
 
 /**
  * BeanUtils工具类,扩展BeanUtils功能并增加其他对Bean的处理的工具类
- * 
- * @author caixiangning@fang.com
  *
- *         2017-12-13
+ * @author caixiangning@fang.com
+ * <p>
+ * 2017-12-13
  */
 public class CityMapBeanUtils extends BeanUtils {
-
     /**
      * 对象拷贝
-     * 
+     *
      * @param source
      * @param target
      */
@@ -26,14 +25,14 @@ public class CityMapBeanUtils extends BeanUtils {
 
     /**
      * 集合拷贝
-     * 
+     *
      * @param sourceList
      * @param targetList
      * @param clazz
      * @return
      */
     public static <T, E> List<E> copyProperties(List<T> sourceList, List<E> targetList,
-            Class<E> clazz) {
+                                                Class<E> clazz) {
         for (T t : sourceList) {
             E element = null;
             try {
@@ -49,7 +48,7 @@ public class CityMapBeanUtils extends BeanUtils {
 
     /**
      * 判断某个对象的各个属性是否为空,如果为空则返回null否则返回原对象
-     * 
+     *
      * @param obj
      * @return
      */

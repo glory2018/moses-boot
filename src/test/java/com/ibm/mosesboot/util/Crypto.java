@@ -9,7 +9,6 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 public class Crypto {
-
     public static String encryptDES(String encryptString, String encryptKey) throws Exception {
         IvParameterSpec zeroIv = new IvParameterSpec(encryptKey.getBytes(StandardCharsets.UTF_8));
         SecretKeySpec key = new SecretKeySpec(encryptKey.getBytes(StandardCharsets.UTF_8), "DES");
@@ -71,5 +70,4 @@ public class Crypto {
         }
         return hexString.toString();
     }
-
 }

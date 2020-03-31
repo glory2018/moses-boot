@@ -13,16 +13,17 @@
         var content = UE.getEditor('content');
         var note = UE.getEditor('note');
 
-        $(function(){
+        $(function () {
             var noteData = "[[${ueditor.note}]]";
-            note.ready(function() {
+            note.ready(function () {
                 note.setContent(noteData, false);
             });
             var contentData = "[[${ueditor.content}]]";
-            content.ready(function() {
+            content.ready(function () {
                 content.setContent(contentData, false);
             });
         });
+
         function save() {
             var param = {
                 "id": $("#id").val(),

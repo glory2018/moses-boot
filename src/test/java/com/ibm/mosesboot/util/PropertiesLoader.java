@@ -1,14 +1,9 @@
 /**
  * Copyright (c) 2005-2011 springside.org.cn
- *
+ * <p>
  * $Id: PropertiesLoader.java 1690 2012-02-22 13:42:00Z calvinxiu $
  */
 package com.ibm.mosesboot.util;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.NoSuchElementException;
-import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -16,6 +11,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.NoSuchElementException;
+import java.util.Properties;
 
 /**
  * Properties文件载入工具类. 可载入多个properties文件,
@@ -25,11 +25,8 @@ import org.springframework.core.io.ResourceLoader;
  * @version 2013-05-15
  */
 public class PropertiesLoader {
-
     private static Logger logger = LoggerFactory.getLogger(PropertiesLoader.class);
-
     private static ResourceLoader resourceLoader = new DefaultResourceLoader();
-
     private final Properties properties;
 
     public PropertiesLoader(String... resourcesPaths) {
@@ -135,11 +132,8 @@ public class PropertiesLoader {
      */
     private Properties loadProperties(String... resourcesPaths) {
         Properties props = new Properties();
-
         for (String location : resourcesPaths) {
-
             // logger.debug("Loading properties file from:" + location);
-
             InputStream is = null;
             try {
                 Resource resource = resourceLoader.getResource(location);

@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
  * @version 2013-01-15
  */
 public class Threads {
-
     /**
      * sleep等待,单位为毫秒,忽略InterruptedException.
      */
@@ -75,5 +74,4 @@ public class Threads {
             Thread.currentThread().interrupt();
         }
     }
-
 }
