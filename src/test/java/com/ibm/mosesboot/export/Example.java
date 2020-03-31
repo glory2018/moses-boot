@@ -5,9 +5,9 @@
  */
 package com.ibm.mosesboot.export;
 
-import com.ibm.mosesboot.freemarker.RichHtmlHandler;
-import com.ibm.mosesboot.freemarker.WordGeneratorWithFreemarker;
-import com.ibm.mosesboot.freemarker.bean.RichObject;
+import com.moses.framework.freemarker.RichHtmlHandler;
+import com.moses.framework.freemarker.WordGeneratorWithFreemarker;
+import com.moses.framework.freemarker.bean.RichObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

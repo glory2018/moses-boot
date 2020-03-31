@@ -5,7 +5,7 @@
  */
 package com.ibm.mosesboot.email;
 
-import com.ibm.mosesboot.email.service.MailService;
+import com.moses.framework.samples.email.service.MailService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

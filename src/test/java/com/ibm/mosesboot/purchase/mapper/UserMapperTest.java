@@ -5,8 +5,8 @@
  ********* K*I*N*G ********** B*A*C*K *******/
 package com.ibm.mosesboot.purchase.mapper;
 
-import com.ibm.mosesboot.user.entity.User;
-import com.ibm.mosesboot.user.mapper.UserMapper;
+import com.moses.framework.user.entity.User;
+import com.moses.framework.user.mapper.UserMapper;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
