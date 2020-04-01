@@ -5,14 +5,14 @@
  */
 package com.moses.framework.samples.export.service.impl;
 
-import com.moses.framework.samples.export.mapper.UeditorMapper;
-import com.moses.framework.samples.export.service.IUeditorService;
-import com.moses.framework.samples.export.service.TemplateConfigService;
 import com.moses.framework.freemarker.RichHtmlHandler;
+import com.moses.framework.freemarker.WordGeneratorWithFreemarker;
 import com.moses.framework.freemarker.bean.RichObject;
 import com.moses.framework.samples.export.entity.TemplateConfig;
 import com.moses.framework.samples.export.entity.Ueditor;
-import com.moses.framework.freemarker.WordGeneratorWithFreemarker;
+import com.moses.framework.samples.export.mapper.UeditorMapper;
+import com.moses.framework.samples.export.service.IUeditorService;
+import com.moses.framework.samples.export.service.TemplateConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

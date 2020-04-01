@@ -5,8 +5,8 @@
  */
 package com.moses.framework.samples.payment.service.impl;
 
-import com.moses.framework.samples.payment.service.IPaymentService;
 import com.moses.framework.samples.payment.entity.SalaryPO;
+import com.moses.framework.samples.payment.service.IPaymentService;
 import com.moses.framework.samples.payment.vo.SalaryVO;
 import org.springframework.stereotype.Service;
 
