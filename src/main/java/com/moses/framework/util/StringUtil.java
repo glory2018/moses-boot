@@ -63,8 +63,9 @@ public class StringUtil {
      * @since 1.0
      */
     public static boolean isNull(String s) {
-        if (s == null || s.trim().equals(""))
+        if (s == null || "".equals(s.trim())) {
             return true;
+        }
         return false;
     }
 

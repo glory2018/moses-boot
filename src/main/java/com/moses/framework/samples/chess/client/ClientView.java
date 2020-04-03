@@ -27,7 +27,7 @@ public class ClientView extends JFrame implements ActionListener {
     JButton jbSendMessage = new JButton("发送");//创建"连接"按钮
     Checkerboard checkerboard = new Checkerboard(); //创建棋盘;
     Rule rule = new Rule(checkerboard); //创建规则类
-    JPanel rightJPanel = new JPanel();//创建右边菜单栏
+    JPanel rightPanel = new JPanel();//创建右边菜单栏
     public String opponentName = null; //正在对弈的对手
     public boolean isCanMove = true; //是否轮到我走棋的标记
     public boolean userCamp = true; //判断用户阵营
@@ -37,7 +37,7 @@ public class ClientView extends JFrame implements ActionListener {
     int preX, preY;
 
     public ClientView() {
-        initRightJPanl();//初始化右边框
+        initRightPanl();//初始化右边框
         initButton();
         initCheckerboard();//初始化棋盘
     }
@@ -47,31 +47,31 @@ public class ClientView extends JFrame implements ActionListener {
      *
      * @return
      */
-    public void initRightJPanl() {
-        rightJPanel.setPreferredSize(new Dimension(200, 700));
-        rightJPanel.setLayout(null);//设为空布局
+    public void initRightPanl() {
+        rightPanel.setPreferredSize(new Dimension(200, 700));
+        rightPanel.setLayout(null);//设为空布局
         jlHost.setBounds(10, 10, 50, 20);
-        rightJPanel.add(jlHost);//添加"主机名"标签
+        rightPanel.add(jlHost);//添加"主机名"标签
         jtfHost.setBounds(100, 10, 80, 20);
-        rightJPanel.add(jtfHost);//添加用于输入主机名的文本框
+        rightPanel.add(jtfHost);//添加用于输入主机名的文本框
         jlPort.setBounds(10, 40, 50, 20);
-        rightJPanel.add(jlPort);//添加"端口号"标签
+        rightPanel.add(jlPort);//添加"端口号"标签
         jtfPort.setBounds(100, 40, 80, 20);
-        rightJPanel.add(jtfPort);//添加用于输入端口号的文本框
+        rightPanel.add(jtfPort);//添加用于输入端口号的文本框
         jlNickName.setBounds(10, 70, 50, 20);
-        rightJPanel.add(jlNickName);//添加"昵称"标签
+        rightPanel.add(jlNickName);//添加"昵称"标签
         jtfNickName.setBounds(100, 70, 80, 20);
-        rightJPanel.add(jtfNickName);//添加用于输入昵称的文本框
+        rightPanel.add(jtfNickName);//添加用于输入昵称的文本框
         jbConnection.setBounds(10, 100, 80, 20);
-        rightJPanel.add(jbConnection);//添加"连接"按钮
+        rightPanel.add(jbConnection);//添加"连接"按钮
         jbExtConnection.setBounds(110, 100, 80, 20);
-        rightJPanel.add(jbExtConnection);//添加"断开"按钮
+        rightPanel.add(jbExtConnection);//添加"断开"按钮
         jcbNickList.setBounds(10, 130, 180, 20);
-        rightJPanel.add(jcbNickList);//添加用于显示当前用户的下拉列表框
+        rightPanel.add(jcbNickList);//添加用于显示当前用户的下拉列表框
         jbChallenge.setBounds(10, 160, 80, 20);
-        rightJPanel.add(jbChallenge);//添加"挑战"按钮
+        rightPanel.add(jbChallenge);//添加"挑战"按钮
         jbAdmitDefeat.setBounds(110, 160, 80, 20);
-        rightJPanel.add(jbAdmitDefeat);//添加"认输"按钮
+        rightPanel.add(jbAdmitDefeat);//添加"认输"按钮
         jscrollPane.setBounds(10, 190, 180, 400);
         textArea.setEditable(false);//设置l聊天框不可编辑
         textArea.setBackground(new Color(200, 200, 200));//设置背景色
@@ -79,12 +79,12 @@ public class ClientView extends JFrame implements ActionListener {
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); //设置滚动条垂直自动出现
         jscrollPane.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);//设置滚动条水平自动出现
-        rightJPanel.add(jscrollPane);//添加聊天框
+        rightPanel.add(jscrollPane);//添加聊天框
         sendMessageText.setBounds(10, 600, 180, 50);
-        rightJPanel.add(sendMessageText);//添加发送的消息框
+        rightPanel.add(sendMessageText);//添加发送的消息框
         jbSendMessage.setBounds(130, 660, 60, 20);
-        rightJPanel.add(jbSendMessage);//添加发送按钮
-        rightJPanel.setBackground(new Color(128, 128, 128));
+        rightPanel.add(jbSendMessage);//添加发送按钮
+        rightPanel.setBackground(new Color(128, 128, 128));
     }
 
     public void initButton() {
@@ -106,11 +106,21 @@ public class ClientView extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == jbConnection) openConnection(); //请求连接
-        if (e.getSource() == jbChallenge) launchChallenge();//发起挑战
-        if (e.getSource() == jbExtConnection) extConnection();//断开连接
-        if (e.getSource() == jbAdmitDefeat) admitDefeat(); //认输
-        if (e.getSource() == jbSendMessage) sendMessage(); //发送消息
+        if (e.getSource() == jbConnection) {
+            openConnection(); //请求连接
+        }
+        if (e.getSource() == jbChallenge) {
+            launchChallenge();//发起挑战
+        }
+        if (e.getSource() == jbExtConnection) {
+            extConnection();//断开连接
+        }
+        if (e.getSource() == jbAdmitDefeat) {
+            admitDefeat(); //认输
+        }
+        if (e.getSource() == jbSendMessage) {
+            sendMessage(); //发送消息
+        }
     }
 
     public void openConnection() {
@@ -153,7 +163,7 @@ public class ClientView extends JFrame implements ActionListener {
     public void launchChallenge() {
         try {
             String name = (String) jcbNickList.getSelectedItem();
-            if (name == null || name.equals("")) {
+            if (name == null || "".equals(name)) {
                 JOptionPane.showMessageDialog(this, "请选择对方名字", "错误", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -221,8 +231,9 @@ public class ClientView extends JFrame implements ActionListener {
     public void sendMessage() {
         try {
             String message = sendMessageText.getText().trim();
-            if (opponentName == null)
+            if (opponentName == null) {
                 return; // 如果没有正在对战的对手直接返回
+            }
             if (message != null && message.length() > 0) {
                 clientThread.out.writeUTF(ClientMenu.CHAT + message + "-" + opponentName);// 向服务器发送消息
                 textArea.append("你对" + opponentName + "说:" + "\n    " + message + "\n\n");
@@ -236,6 +247,7 @@ public class ClientView extends JFrame implements ActionListener {
     private void initCheckerboard() {
         //添加鼠标点击事件
         checkerboard.addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e) {
                 int x = e.getX() / Checkerboard.DIAMETER;
                 int y = e.getY() / Checkerboard.DIAMETER;
@@ -268,7 +280,9 @@ public class ClientView extends JFrame implements ActionListener {
                                     }
                                 }
                                 if (target != null)// 判断是否分出胜负
+                                {
                                     isWinning(target, x, y);
+                                }
                                 isMove = true;
                             }
                         }
@@ -284,8 +298,9 @@ public class ClientView extends JFrame implements ActionListener {
                                 checkerboard.pieceList[x][y].setSelection(true);
                             }
                             if (preX != x || preY != y) {
-                                if (checkerboard.pieceList[preX][preY] != null)
+                                if (checkerboard.pieceList[preX][preY] != null) {
                                     checkerboard.pieceList[preX][preY].setSelection(false);
+                                }
                             }
                             preX = x;
                             preY = y;
@@ -297,6 +312,7 @@ public class ClientView extends JFrame implements ActionListener {
         });
         //添加一个关闭事件
         addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 String str = "是否要退出游戏?";
                 // 添加消息对话框
@@ -307,7 +323,7 @@ public class ClientView extends JFrame implements ActionListener {
                 }
             }
         });
-        JSplitPane jsp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, checkerboard, rightJPanel);//创建一个JSplitPane
+        JSplitPane jsp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, checkerboard, rightPanel);//创建一个JSplitPane
         jsp.setEnabled(false); //设置分割条禁止拖动
         add(jsp);
         setTitle("中国象棋");
@@ -364,7 +380,9 @@ public class ClientView extends JFrame implements ActionListener {
             for (int j = 0; j < checkerboard.pieceList[i].length; j++) {
                 item = checkerboard.pieceList[i][j];
                 if (item != null) {
-                    if (item.getSelection() && item.getCamp() == userCamp) return item;
+                    if (item.getSelection() && item.getCamp() == userCamp) {
+                        return item;
+                    }
                 }
             }
         }
@@ -378,7 +396,9 @@ public class ClientView extends JFrame implements ActionListener {
             for (int j = 0; j < checkerboard.pieceList[i].length; j++) {
                 item = checkerboard.pieceList[i][j];
                 if (checkerboard.pieceList[i][j] != null) {
-                    if (item.getX() == x && item.getY() == y) return item;
+                    if (item.getX() == x && item.getY() == y) {
+                        return item;
+                    }
                 }
             }
         }

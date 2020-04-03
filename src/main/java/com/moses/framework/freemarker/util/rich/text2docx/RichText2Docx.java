@@ -1,4 +1,4 @@
-package com.moses.framework.freemarker.util.rich.richText2Docx;
+package com.moses.framework.freemarker.util.rich.text2docx;
 
 import com.moses.framework.freemarker.util.rich.FreemarkerUtils;
 import freemarker.template.Configuration;
@@ -52,7 +52,7 @@ public class RichText2Docx {
                 switch (e.tagName()) {
                     case "p":
                         //一般P标签
-                        if (!e.parent().tagName().equals("td") && !e.parent().tagName().equals("th")) {
+                        if (!"td".equals(e.parent().tagName()) && !"th".equals(e.parent().tagName())) {
                             String pStr = e.text();
                             xmlData.append(handleElement("p", Entities.escape(pStr)));
                         }
@@ -187,7 +187,7 @@ public class RichText2Docx {
         while ((ch = is.read()) != -1) {
             bAOutputStream.write(ch);
         }
-        byte data[] = bAOutputStream.toByteArray();
+        byte[] data = bAOutputStream.toByteArray();
         bAOutputStream.close();
         return data;
     }

@@ -39,8 +39,9 @@ public class HttpUtils {
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     connection.getInputStream(), "UTF-8"));
             String temp;
-            while ((temp = br.readLine()) != null)
+            while ((temp = br.readLine()) != null) {
                 buffer.append(temp);
+            }
             br.close();
         } catch (Exception exception) {
         }
@@ -71,19 +72,23 @@ public class HttpUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (con != null)
+        if (con != null) {
             con.disconnect();
-        if (con != null)
+        }
+        if (con != null) {
             con.disconnect();
-        if (con != null)
+        }
+        if (con != null) {
             con.disconnect();
+        }
         StringBuffer buffer = new StringBuffer();
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(
                     con.getInputStream(), "UTF-8"));
             String temp;
-            while ((temp = br.readLine()) != null)
+            while ((temp = br.readLine()) != null) {
                 buffer.append(temp);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

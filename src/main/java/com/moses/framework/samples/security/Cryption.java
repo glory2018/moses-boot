@@ -16,8 +16,8 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 
 public class Cryption {
-    private final static String KeystoreAlias = "testkeypair";
-    private final static String CertName = "C:\\Windows\\System32\\mycert.crt";
+    private final static String KEYSTORE_ALIAS = "testkeypair";
+    private final static String CERT_NAME = "C:\\Windows\\System32\\mycert.crt";
     static byte[] desKeyData = {(byte) 0x01, (byte) 0x02, (byte) 0x03,
             (byte) 0x04, (byte) 0x05, (byte) 0x06, (byte) 0x07, (byte) 0x08};
 
@@ -57,24 +57,25 @@ public class Cryption {
      *
      * @param sigText      被签名内容的输入数组
      * @param outFileName  保存签名后输出文件的名称
-     * @param KeyPassword  读取Keystore使用的密码
-     * @param KeyStorePath 存放.keystore文件的路径
+     * @param keyPassword  读取Keystore使用的密码
+     * @param keyStorePath 存放.keystore文件的路径
      * @return value Description
      * @since 1.0
      */
     public static void sig(byte[] sigText, String outFileName,
-                           String KeyPassword, String KeyStorePath) {
+                           String keyPassword, String keyStorePath) {
         char[] kpass;
         int i;
         try {
             KeyStore ks = KeyStore.getInstance("JKS");
-            FileInputStream ksfis = new FileInputStream(KeyStorePath);
+            FileInputStream ksfis = new FileInputStream(keyStorePath);
             BufferedInputStream ksbufin = new BufferedInputStream(ksfis);
-            kpass = new char[KeyPassword.length()];
-            for (i = 0; i < KeyPassword.length(); i++)
-                kpass[i] = KeyPassword.charAt(i);
+            kpass = new char[keyPassword.length()];
+            for (i = 0; i < keyPassword.length(); i++) {
+                kpass[i] = keyPassword.charAt(i);
+            }
             ks.load(ksbufin, kpass);
-            PrivateKey priv = (PrivateKey) ks.getKey(KeystoreAlias, kpass);
+            PrivateKey priv = (PrivateKey) ks.getKey(KEYSTORE_ALIAS, kpass);
             Signature rsa = Signature.getInstance("MD5withRSA");
             rsa.initSign(priv);
             rsa.update(sigText);
@@ -96,7 +97,7 @@ public class Cryption {
         try {
             CertificateFactory certificatefactory = CertificateFactory
                     .getInstance("X.509");
-            FileInputStream fin = new FileInputStream(CertName);
+            FileInputStream fin = new FileInputStream(CERT_NAME);
             X509Certificate certificate = (X509Certificate) certificatefactory
                     .generateCertificate(fin);
             PublicKey pub = certificate.getPublicKey();

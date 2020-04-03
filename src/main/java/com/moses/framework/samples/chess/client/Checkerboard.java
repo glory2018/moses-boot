@@ -5,8 +5,13 @@ import java.awt.*;
 
 @SuppressWarnings("serial")
 public class Checkerboard extends JPanel {
+    //棋盘宽
     public static final int GAME_WIDTH = 630;
+    //格宽，直径
     public static final int DIAMETER = GAME_WIDTH / 9;
+    //格宽的一半
+    public static final int HALF_METER = DIAMETER / 2;
+    //棋盘高
     public static final int GAME_HEIGHT = DIAMETER * 10;
     public Piece[][] pieceList;
 
@@ -25,16 +30,16 @@ public class Checkerboard extends JPanel {
         g.setStroke(new BasicStroke(2.0f));//设置粗度
         g.setColor(Color.red); // 设为红色
         //画两边竖线
-        g.drawLine(DIAMETER / 2, DIAMETER / 2, DIAMETER / 2, DIAMETER * 9 + DIAMETER / 2);
-        g.drawLine(DIAMETER / 2 + DIAMETER * 8, DIAMETER / 2, DIAMETER / 2 + DIAMETER * 8, DIAMETER * 9 + DIAMETER / 2);
+        g.drawLine(HALF_METER, HALF_METER, HALF_METER, DIAMETER * 9 + HALF_METER);
+        g.drawLine(HALF_METER + DIAMETER * 8, HALF_METER, HALF_METER + DIAMETER * 8, DIAMETER * 9 + HALF_METER);
         // 画竖线
-        for (int i = DIAMETER / 2; i <= GAME_WIDTH - (DIAMETER / 2); i += DIAMETER) {
-            g.drawLine(i, DIAMETER / 2, i, (DIAMETER * 4 + DIAMETER / 2));
-            g.drawLine(i, (DIAMETER * 5 + DIAMETER / 2), i, GAME_HEIGHT - DIAMETER / 2);
+        for (int i = HALF_METER; i <= GAME_WIDTH - (HALF_METER); i += DIAMETER) {
+            g.drawLine(i, HALF_METER, i, (DIAMETER * 4 + HALF_METER));
+            g.drawLine(i, (DIAMETER * 5 + HALF_METER), i, GAME_HEIGHT - HALF_METER);
         }
         // 画横线
-        for (int i = DIAMETER / 2; i <= GAME_HEIGHT - (DIAMETER / 2); i += DIAMETER) {
-            g.drawLine(DIAMETER / 2, i, GAME_WIDTH - DIAMETER / 2, i);
+        for (int i = HALF_METER; i <= GAME_HEIGHT - (HALF_METER); i += DIAMETER) {
+            g.drawLine(HALF_METER, i, GAME_WIDTH - HALF_METER, i);
         }
         //画楚河汉界
         g.setFont(new Font("楷体", Font.BOLD, 50));
@@ -78,10 +83,11 @@ public class Checkerboard extends JPanel {
                     x = piece.getX();
                     y = piece.getY();
                     if (x == i && y == j) {
-                        if (piece.getSelection())
+                        if (piece.getSelection()) {
                             g.setColor(Color.white);
-                        else
+                        } else {
                             g.setColor(new Color(200, 100, 50)); // 设为桔黄色
+                        }
                         g.fillOval(DIAMETER * x, DIAMETER * y, DIAMETER, DIAMETER);
                         g.setStroke(new BasicStroke(3.0f));
                         g.setColor(Color.black);
@@ -89,10 +95,11 @@ public class Checkerboard extends JPanel {
                         g.setStroke(new BasicStroke(1.0f));
                         g.drawArc(DIAMETER * x + 4, DIAMETER * y + 4, 62, 62, 0, 360);
                         // 判断阵营
-                        if (piece.getCamp())
+                        if (piece.getCamp()) {
                             g.setColor(Color.red);
-                        else
+                        } else {
                             g.setColor(Color.black);
+                        }
                         g.drawString(piece.getName(), DIAMETER * x + 8, DIAMETER * y + 50);
                     }
                 }

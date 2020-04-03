@@ -13,10 +13,10 @@ import java.lang.reflect.*;
  *
  * @author Steve Frank
  */
-public abstract class ReflectionUtils {
+public abstract class BaseReflectionUtils {
     public static final String CGLIB_CLASS_SEPARATOR = "$$";
     private static Logger logger = LoggerFactory
-            .getLogger(ReflectionUtils.class);
+            .getLogger(BaseReflectionUtils.class);
 
     /**
      * 调用Getter方法.

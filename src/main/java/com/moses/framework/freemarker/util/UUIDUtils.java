@@ -12,7 +12,7 @@ public class UUIDUtils {
      *
      * @return
      */
-    public static String get32UUID() {
+    public static String getId() {
         return UUID.randomUUID().toString().replace("-", "");
     }
 }

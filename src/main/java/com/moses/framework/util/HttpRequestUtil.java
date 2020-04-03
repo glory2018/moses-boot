@@ -66,8 +66,9 @@ public class HttpRequestUtil {
                     inputStream, "utf-8");
             BufferedReader bufferedReader = new BufferedReader(
                     inputStreamReader);
-            for (String str = null; (str = bufferedReader.readLine()) != null; )
+            for (String str = null; (str = bufferedReader.readLine()) != null; ) {
                 buffer.append(str);
+            }
             bufferedReader.close();
             inputStreamReader.close();
             inputStream.close();
@@ -115,14 +116,16 @@ public class HttpRequestUtil {
             for (Iterator iterator = map.keySet().iterator(); iterator
                     .hasNext(); System.out.println((new StringBuilder(String
                     .valueOf(key))).append("--->").append(map.get(key))
-                    .toString()))
+                    .toString())) {
                 key = (String) iterator.next();
+            }
             in = new BufferedReader(new InputStreamReader(
                     connection.getInputStream()));
             String line;
-            while ((line = in.readLine()) != null)
+            while ((line = in.readLine()) != null) {
                 result = (new StringBuilder(String.valueOf(result))).append(
                         line).toString();
+            }
         } catch (Exception e) {
             System.out
                     .println((new StringBuilder(
@@ -131,20 +134,23 @@ public class HttpRequestUtil {
             e.printStackTrace();
         }
         try {
-            if (in != null)
+            if (in != null) {
                 in.close();
+            }
         } catch (Exception e2) {
             e2.printStackTrace();
         }
         try {
-            if (in != null)
+            if (in != null) {
                 in.close();
+            }
         } catch (Exception e2) {
             e2.printStackTrace();
         }
         try {
-            if (in != null)
+            if (in != null) {
                 in.close();
+            }
         } catch (Exception e2) {
             e2.printStackTrace();
         }
@@ -184,9 +190,10 @@ public class HttpRequestUtil {
             in = new BufferedReader(
                     new InputStreamReader(conn.getInputStream()));
             String line;
-            while ((line = in.readLine()) != null)
+            while ((line = in.readLine()) != null) {
                 result = (new StringBuilder(String.valueOf(result))).append(
                         line).toString();
+            }
         } catch (Exception e) {
             System.out
                     .println((new StringBuilder(
@@ -195,33 +202,39 @@ public class HttpRequestUtil {
             e.printStackTrace();
         }
         try {
-            if (out != null)
+            if (out != null) {
                 out.close();
-            if (in != null)
+            }
+            if (in != null) {
                 in.close();
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         try {
-            if (out != null)
+            if (out != null) {
                 out.close();
-            if (in != null)
+            }
+            if (in != null) {
                 in.close();
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         try {
-            if (out != null)
+            if (out != null) {
                 out.close();
-            if (in != null)
+            }
+            if (in != null) {
                 in.close();
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         return result;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String url = "http://api.adf.ly/api.php";
         String para = "key=youkeyid&youuid=uid&advert_type=int&domain=adf.ly&url=http://somewebsite.com";
         String sr = sendPost(url, para, true);

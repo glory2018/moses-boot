@@ -34,15 +34,33 @@ public class ClientThread extends Thread {
         while (sign) {
             try {
                 String message = in.readUTF().trim();
-                if (message.startsWith(ClientMenu.RE_USERS_LIST)) reUsersLiset(message);//收到列表刷新信息
-                if (message.startsWith(ClientMenu.REPEAT_NAME)) repeatName(message);//收到重名的信息
-                if (message.startsWith(ClientMenu.LAUNCH_CHALLENGE)) receiveChallenge(message);//收到请求挑战信息
-                if (message.startsWith(ClientMenu.ACCEPT_CHALLENGE)) acceptChallenge(message);//收到接受挑战的信息
-                if (message.startsWith(ClientMenu.REFUSE_CHALLENGE)) refuseChallenge(message);//收到拒绝挑战的信息
-                if (message.startsWith(ClientMenu.ADMIT_DEFEAT)) admitDefeat(); //收到认输的信息
-                if (message.startsWith(ClientMenu.MOVE)) pieceMove(message);//走棋
-                if (message.startsWith(ClientMenu.OPPONENT_EXIT)) opponentExit();//对手离线
-                if (message.startsWith(ClientMenu.CHAT)) chatMessage(message);//收到道聊天信息
+                if (message.startsWith(ClientMenu.RE_USERS_LIST)) {
+                    reUsersLiset(message);//收到列表刷新信息
+                }
+                if (message.startsWith(ClientMenu.REPEAT_NAME)) {
+                    repeatName(message);//收到重名的信息
+                }
+                if (message.startsWith(ClientMenu.LAUNCH_CHALLENGE)) {
+                    receiveChallenge(message);//收到请求挑战信息
+                }
+                if (message.startsWith(ClientMenu.ACCEPT_CHALLENGE)) {
+                    acceptChallenge(message);//收到接受挑战的信息
+                }
+                if (message.startsWith(ClientMenu.REFUSE_CHALLENGE)) {
+                    refuseChallenge(message);//收到拒绝挑战的信息
+                }
+                if (message.startsWith(ClientMenu.ADMIT_DEFEAT)) {
+                    admitDefeat(); //收到认输的信息
+                }
+                if (message.startsWith(ClientMenu.MOVE)) {
+                    pieceMove(message);//走棋
+                }
+                if (message.startsWith(ClientMenu.OPPONENT_EXIT)) {
+                    opponentExit();//对手离线
+                }
+                if (message.startsWith(ClientMenu.CHAT)) {
+                    chatMessage(message);//收到道聊天信息
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -120,7 +138,9 @@ public class ClientThread extends Thread {
         clientView.isCanMove = true; //修改可以移动的标记
         clientView.checkerboard.repaint();
         if (target != null)// 判断是否分出胜负
+        {
             clientView.isWinning(target, endX, endY);
+        }
     }
 
     public void repeatName(String message) {

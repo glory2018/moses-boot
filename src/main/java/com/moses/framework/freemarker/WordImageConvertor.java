@@ -40,7 +40,7 @@ public class WordImageConvertor {
         for (int len = input.read(temp); len != -1; len = input.read(temp)) {
             out.write(temp, 0, len);
         }
-        pictureBuffer.append(new String(base64.encodeBase64Chunked(out.toByteArray())));
+        pictureBuffer.append(new String(Base64.encodeBase64Chunked(out.toByteArray())));
         input.close();
         return pictureBuffer.toString();
     }
@@ -64,10 +64,10 @@ public class WordImageConvertor {
         //mht文件中针对shapeid的生成好像规律，其内置的生成函数没法得知，但是只要保证其唯一就行
         //这里用前置加32位的uuid来保证其唯一性。
         String shapeid = shapeidPrex;
-        shapeid += UUIDUtils.get32UUID();
+        shapeid += UUIDUtils.getId();
         //spid ,同shapeid处理
         String spid = spidPrex;
-        spid += UUIDUtils.get32UUID();
+        spid += UUIDUtils.getId();
 	    /*	图片在mht中显示的格式
 	        <!--[if gte vml 1]><v:shape id=3D"_x56fe__x7247__x0020_0" o:spid=3D"_x0000_i10=
 				26"

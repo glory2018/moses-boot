@@ -21,15 +21,16 @@ public class Signatrue {
         for (int i = 0; i < len; i++) {
             Provider p = pros[i];
             System.out
-                    .println("Provider " + p.getName() + " " + p.getVersion());
+                    .println("Provider " + p.getName() + " " + p.getVersionStr());
             System.out.println("   Surported Signatrue algoritms:");
             Set keys = p.keySet();
             Iterator ite = keys.iterator();
             while (ite.hasNext()) {
                 String name = (String) ite.next();
-                if (name.startsWith(prefix))
+                if (name.startsWith(prefix)) {
                     System.out
                             .println("    " + name.substring(prefix.length()));
+                }
             }// while
         }// for
     }

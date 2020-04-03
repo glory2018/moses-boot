@@ -15,10 +15,18 @@ import org.apache.ibatis.annotations.Select;
  * @Date 2019/1/21 15:40
  */
 public interface UeditorMapper extends BaseMapper<Ueditor> {
+    /**
+     * @param ueditor
+     * @return
+     */
     @Override
     @Insert("INSERT INTO T_DOC_UEDITOR(id,templateId,title,note,content) VALUES(#{id},#{templateId},#{title},#{note},#{content})")
     int insert(Ueditor ueditor);
 
+    /**
+     * @param id
+     * @return
+     */
     @Select("select * from T_DOC_UEDITOR where id = #{id}")
     Ueditor findUeditorById(Integer id);
 }

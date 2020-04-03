@@ -36,14 +36,30 @@ public class ServerThread extends Thread {
         while (sign) {
             try {
                 String message = in.readUTF().trim();//接收客户端传来的信息
-                if (message.startsWith(ClientMenu.REQUEST_CONNECTION)) requestConnection(message);//请求连接
-                if (message.startsWith(ClientMenu.LAUNCH_CHALLENGE)) launchChallenge(message);//发起挑战
-                if (message.startsWith(ClientMenu.ACCEPT_CHALLENGE)) acceptChallenge(message);//接受挑战
-                if (message.startsWith(ClientMenu.REFUSE_CHALLENGE)) refuseChallenge(message);//拒绝挑战
-                if (message.startsWith(ClientMenu.ADMIT_DEFEAT)) admitDefeat(message);//认输
-                if (message.startsWith(ClientMenu.MOVE)) pieceMove(message);//走棋
-                if (message.startsWith(ClientMenu.USER_EXIT)) userExit(message);//断开连接
-                if (message.startsWith(ClientMenu.CHAT)) sendMessage(message);//聊天信息
+                if (message.startsWith(ClientMenu.REQUEST_CONNECTION)) {
+                    requestConnection(message);//请求连接
+                }
+                if (message.startsWith(ClientMenu.LAUNCH_CHALLENGE)) {
+                    launchChallenge(message);//发起挑战
+                }
+                if (message.startsWith(ClientMenu.ACCEPT_CHALLENGE)) {
+                    acceptChallenge(message);//接受挑战
+                }
+                if (message.startsWith(ClientMenu.REFUSE_CHALLENGE)) {
+                    refuseChallenge(message);//拒绝挑战
+                }
+                if (message.startsWith(ClientMenu.ADMIT_DEFEAT)) {
+                    admitDefeat(message);//认输
+                }
+                if (message.startsWith(ClientMenu.MOVE)) {
+                    pieceMove(message);//走棋
+                }
+                if (message.startsWith(ClientMenu.USER_EXIT)) {
+                    userExit(message);//断开连接
+                }
+                if (message.startsWith(ClientMenu.CHAT)) {
+                    sendMessage(message);//聊天信息
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -34,22 +34,24 @@ public class DigitalProcess {
 
     public static int parseInt(Object param) {
         int value = 0;
-        if (param instanceof Integer)
+        if (param instanceof Integer) {
             value = ((Integer) param).intValue();
-        else if (param instanceof String) {
+        } else if (param instanceof String) {
             String str = (String) param;
-            if (!isNull(str))
+            if (!isNull(str)) {
                 value = Integer.parseInt(str);
-        } else if (param instanceof BigDecimal)
+            }
+        } else if (param instanceof BigDecimal) {
             value = ((BigDecimal) param).intValue();
+        }
         return value;
     }
 
     public static String parseString(Object param) {
         String value = "";
-        if (param instanceof String)
+        if (param instanceof String) {
             value = (String) param;
-        else if (param instanceof BigDecimal) {
+        } else if (param instanceof BigDecimal) {
             BigDecimal bd = (BigDecimal) param;
             value = bd.toString();
         } else if (param instanceof Timestamp) {
@@ -61,14 +63,16 @@ public class DigitalProcess {
 
     public static Double parseDouble(Object param) {
         double value = 0.0D;
-        if (param instanceof Double)
+        if (param instanceof Double) {
             value = ((Double) param).doubleValue();
-        else if (param instanceof String) {
+        } else if (param instanceof String) {
             String str = (String) param;
-            if (!isNull(str))
+            if (!isNull(str)) {
                 value = Double.parseDouble(str);
-        } else if (param instanceof BigDecimal)
+            }
+        } else if (param instanceof BigDecimal) {
             value = ((BigDecimal) param).doubleValue();
+        }
         return Double.valueOf(value);
     }
 }

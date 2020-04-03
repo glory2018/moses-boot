@@ -61,6 +61,7 @@ public class SvnBag {
                                         .lastIndexOf('\\'));
                         File[] files = new File(classDir)
                                 .listFiles(new FileFilter() {
+                                    @Override
                                     public boolean accept(File file) {
                                         if (file.getName().equals(
                                                 temp + ".class")
@@ -112,8 +113,9 @@ public class SvnBag {
             e.printStackTrace();
         } finally {
             try {
-                if (reader != null)
+                if (reader != null) {
                     reader.close();
+                }
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
@@ -145,10 +147,12 @@ public class SvnBag {
             e.printStackTrace();
         } finally {
             try {
-                if (outputStream != null)
+                if (outputStream != null) {
                     outputStream.close();
-                if (inputStream != null)
+                }
+                if (inputStream != null) {
                     inputStream.close();
+                }
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
@@ -169,10 +173,10 @@ public class SvnBag {
             while ((string = reader.readLine()) != null) {
                 String key = string.substring(0, string.indexOf('='));
                 String value = string.substring(string.indexOf('=') + 1).trim();
-                if (key.equals("destPath")) {
+                if ("destPath".equals(key)) {
                     SvnBag.destPath = value;
                 }
-                if (key.equals("workPath")) {
+                if ("workPath".equals(key)) {
                     SvnBag.workPath = value;
                 }
             }
@@ -180,8 +184,9 @@ public class SvnBag {
             e.printStackTrace();
         } finally {
             try {
-                if (reader != null)
+                if (reader != null) {
                     reader.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

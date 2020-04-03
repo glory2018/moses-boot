@@ -9,9 +9,27 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2019/7/28
  */
 public interface IUeditorService {
+    /**
+     * 保存
+     *
+     * @param ueditor
+     */
     void save(Ueditor ueditor);
 
+    /**
+     * 导出
+     *
+     * @param id       ID
+     * @param response
+     * @throws Exception
+     */
     public void export(Integer id, HttpServletResponse response) throws Exception;
 
+    /**
+     * 查询
+     *
+     * @param id
+     * @return
+     */
     Ueditor findUeditorById(Integer id);
 }

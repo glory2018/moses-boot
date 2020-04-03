@@ -61,8 +61,9 @@ public class DateUtil {
 
     private static String valueOfString(String str, int len) {
         StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < len - str.length(); i++)
+        for (int i = 0; i < len - str.length(); i++) {
             sb.append("0");
+        }
         return sb.length() != 0 ? (new StringBuilder(String.valueOf(sb
                 .toString()))).append(str).toString() : str;
     }

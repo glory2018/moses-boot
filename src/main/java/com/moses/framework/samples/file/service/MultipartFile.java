@@ -16,20 +16,50 @@ import java.io.InputStream;
  * @date 2019/11/29
  */
 public interface MultipartFile extends InputStreamSource {
+    /**
+     * @return 名称
+     */
     String getName();
 
+    /**
+     * @return 原始文件名
+     */
     String getOriginalFilename();
 
+    /**
+     * @return 内容类型
+     */
     String getContentType();
 
+    /**
+     * @return 是否为空
+     */
     boolean isEmpty();
 
+    /**
+     * @return 大小
+     */
     long getSize();
 
+    /**
+     * @return 字节
+     * @throws IOException
+     */
     byte[] getBytes() throws IOException;
 
+    /**
+     * @return 文件流
+     * @throws IOException
+     */
     @Override
     InputStream getInputStream() throws IOException;
 
+    /**
+     * 转换
+     *
+     * @param dest 目标
+     * @throws IOException
+     * @throws IllegalStateException
+     */
     void transferTo(File dest) throws IOException, IllegalStateException;
 }

@@ -5,6 +5,7 @@ package com.moses.framework.samples.payment.vo;
  * @date 2019/8/3
  */
 public enum Frequently {
+    //周期
     monthly("monthly", 1), quarterly("quarterly", 3), half("half", 6), annually("annually", 12);
     private String name;
     private int num;

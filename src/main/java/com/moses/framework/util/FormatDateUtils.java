@@ -85,8 +85,9 @@ public class FormatDateUtils {
      * @since 1.0
      */
     public static String replaceZero(String str) {
-        if (str.startsWith("0"))
+        if (str.startsWith("0")) {
             return str.substring(1);
+        }
         return str;
     }
 
@@ -114,20 +115,27 @@ public class FormatDateUtils {
      */
     public static String formatDate(Date dateStr, String format) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        if ("yyyy".equals(format))
+        if ("yyyy".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM");
-        if ("MM".equals(format))
+        }
+        if ("MM".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM");
-        if ("dd".equals(format))
+        }
+        if ("dd".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM-dd");
-        if ("hh".equals(format))
+        }
+        if ("hh".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM-dd hh");
-        if ("HH".equals(format))
+        }
+        if ("HH".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM-dd HH");
-        if ("mm".equals(format))
+        }
+        if ("mm".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        if ("ss".equals(format))
+        }
+        if ("ss".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        }
         return sdf.format(dateStr);
     }
 
@@ -142,20 +150,27 @@ public class FormatDateUtils {
      */
     public static Date StringToDate(String dateStr, String format) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        if ("yyyy".equals(format))
+        if ("yyyy".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM");
-        if ("MM".equals(format))
+        }
+        if ("MM".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM");
-        if ("dd".equals(format))
+        }
+        if ("dd".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM-dd");
-        if ("hh".equals(format))
+        }
+        if ("hh".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM-dd hh");
-        if ("HH".equals(format))
+        }
+        if ("HH".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM-dd HH");
-        if ("mm".equals(format))
+        }
+        if ("mm".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        if ("ss".equals(format))
+        }
+        if ("ss".equals(format)) {
             sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        }
         try {
             return sdf.parse(dateStr);
         } catch (ParseException e) {
@@ -179,10 +194,12 @@ public class FormatDateUtils {
         long hour = diff % (24 * 3600) / 3600;
         long minute = diff % 3600 / 60;
         long seconds = diff % 60;
-        if ("zh-s".equals(format))
+        if ("zh-s".equals(format)) {
             return day + "天" + hour + "时" + minute + "分" + seconds + "秒";
-        if ("day".equals(format))
+        }
+        if ("day".equals(format)) {
             return day + "";
+        }
         return day + "";
     }
 
@@ -227,18 +244,19 @@ public class FormatDateUtils {
     // 返回第几个月份，不是几月
     // 季度一年四季， 第一季度：2月-4月， 第二季度：5月-7月， 第三季度：8月-10月， 第四季度：11月-1月
     private static int getQuarterInMonth(int month, boolean isQuarterStart) {
-        int months[] = {0, 3, 6, 9};
+        int[] months = {0, 3, 6, 9};
         if (!isQuarterStart) {
             months = new int[]{2, 5, 8, 11};
         }
-        if (month >= 2 && month <= 4)
+        if (month >= 2 && month <= 4) {
             return months[0];
-        else if (month >= 5 && month <= 7)
+        } else if (month >= 5 && month <= 7) {
             return months[1];
-        else if (month >= 8 && month <= 10)
+        } else if (month >= 8 && month <= 10) {
             return months[2];
-        else
+        } else {
             return months[3];
+        }
     }
 
     public static Timestamp getCurrentTimestamp() {

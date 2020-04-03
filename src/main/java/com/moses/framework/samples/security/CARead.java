@@ -11,7 +11,7 @@ import java.security.cert.X509Certificate;
 
 public class CARead extends JPanel {
     private String CA_Name;
-    private String CA_ItemData[][] = new String[9][2];
+    private String[][] CA_ItemData = new String[9][2];
     private String[] columnNames = {"证书字段标记", "内容"};
 
     public CARead(String CertName) {
@@ -128,6 +128,7 @@ public class CARead extends JPanel {
     public static void main(String[] args) {
         JFrame frame = new JFrame("证书阅读器");
         frame.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }

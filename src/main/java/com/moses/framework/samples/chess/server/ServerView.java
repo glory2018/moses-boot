@@ -26,7 +26,7 @@ public class ServerView extends JFrame implements ActionListener {
 
     public ServerView() {
         //初始化右边框
-        initRightJPanel();
+        initRightPanel();
         //初始化窗口
         initUi();
         serverView = this;
@@ -48,7 +48,7 @@ public class ServerView extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
-    public void initRightJPanel() {
+    public void initRightPanel() {
         jps.setPreferredSize(new Dimension(200, 300));
         jps.setLayout(null);//设为空布局
         //设置控件坐标和大小
@@ -72,7 +72,9 @@ public class ServerView extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == jbStart) StartEvent();// 当单击"启动"按钮时
+        if (e.getSource() == jbStart) {
+            startEvent();// 当单击"启动"按钮时
+        }
         if (e.getSource() == jbStop) {// 单击"关闭"按钮后
         }
     }
@@ -80,7 +82,7 @@ public class ServerView extends JFrame implements ActionListener {
     /**
      * 启动按钮的事件
      */
-    public void StartEvent() {
+    public void startEvent() {
         int port = 0;
         try {
             port = Integer.parseInt(this.jtfPort.getText().trim());//获得用户输入的端口号，并转化为整型

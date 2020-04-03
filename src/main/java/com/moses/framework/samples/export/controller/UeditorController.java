@@ -50,7 +50,7 @@ public class UeditorController {
     @RequestMapping("/downloadFile")
     private String downloadFile(HttpServletResponse response) {
         String downloadFilePath = "D:\\temp\\aa.docx";//被下载的文件在服务器中的路径,
-        String fileName = "aaaaaaaaaaaaaaa.docx";//被下载文件的名称
+        String fileName = "test.docx";//被下载文件的名称
         File file = new File(downloadFilePath);
         if (file.exists()) {
             response.setContentType("application/force-download");// 设置强制下载不打开

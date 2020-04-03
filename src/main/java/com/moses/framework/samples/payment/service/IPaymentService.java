@@ -10,6 +10,9 @@ import java.util.List;
  * @date 2019/7/28
  */
 public interface IPaymentService {
+    /**
+     * @return
+     */
     public List<Integer> getYearList();
 
     public List<SalaryPO> getIncrementList(SalaryVO vo);

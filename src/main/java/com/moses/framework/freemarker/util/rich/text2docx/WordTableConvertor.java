@@ -1,4 +1,4 @@
-package com.moses.framework.freemarker.util.rich.richText2Docx;
+package com.moses.framework.freemarker.util.rich.text2docx;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Entities;

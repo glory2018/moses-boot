@@ -1,9 +1,9 @@
 package com.moses.framework.freemarker;
 
 import com.moses.framework.freemarker.bean.RichObject;
+import com.moses.framework.freemarker.util.FileUtils;
 import com.moses.framework.freemarker.util.RequestResponseContext;
 import com.moses.framework.freemarker.util.UUIDUtils;
-import com.moses.framework.freemarker.util.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -72,7 +72,7 @@ public class RichHtmlHandler {
             File imageFile = new File(srcRealPath);
             String imageFielShortName = imageFile.getName();
             String fileTypeName = FileUtils.getFileSuffix(srcRealPath);
-            String docFileName = "image" + UUIDUtils.get32UUID() + "."
+            String docFileName = "image" + UUIDUtils.getId() + "."
                     + fileTypeName;
             String srcLocationShortName = richObject.getDocSrcParent() + "/" + docFileName;
             String styleAttr = item.attr("style"); // 样式

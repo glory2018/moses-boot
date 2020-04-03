@@ -1,4 +1,4 @@
-package com.moses.framework.freemarker.util.rich.richText2Docx;
+package com.moses.framework.freemarker.util.rich.text2docx;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

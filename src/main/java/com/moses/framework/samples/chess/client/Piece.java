@@ -12,7 +12,7 @@ public class Piece {
     private int y;
     private boolean camp;//阵营 true是红棋,false是黑棋
     private String name; //棋子名称
-    private boolean Selection; //棋子的选中状态 true 选中  , false 未选中
+    private boolean selection; //棋子的选中状态 true 选中  , false 未选中
 
     public Piece(int x, int y, boolean camp, String name) {
         super();
@@ -20,7 +20,7 @@ public class Piece {
         this.y = y;
         this.camp = camp;
         this.name = name;
-        this.Selection = false;
+        this.selection = false;
     }
 
     public int getX() {
@@ -56,10 +56,10 @@ public class Piece {
     }
 
     public boolean getSelection() {
-        return Selection;
+        return selection;
     }
 
     public void setSelection(boolean selection) {
-        Selection = selection;
+        selection = selection;
     }
 }
