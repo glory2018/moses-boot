@@ -75,21 +75,31 @@ public class ClientView extends JFrame implements ActionListener {
                 if (0 <= x && x <= 7 && y >= 5 && y <= 8) {
                     Piece pickChess = isStep();
                     Piece piece = checkerboard.pieceList[x][y];
-                    //翻棋
-                    if (piece != null && "".equals(piece.getName())) {
-                        if (pickChess == null) {
-                            piece.setName(piece.getHiddenName());
-                        }
+                    //选择对方棋子提示
+                    if (pickChess == null && piece.isCamp() != userCamp && !"".equals(piece.getName())) {
+                        popInfo(userCamp ? "该红方走棋！" : "该黑方走棋！");
+                    } else if (pickChess != null && pickChess.getLevel() == 1 && piece != null && "".equals(piece.getName())) {
+                        //炮直接走棋
+                        boolean conformityRule = checkPiece(pickChess, x, y);
+                        movePiece(conformityRule, x, y);
+                    } else if (pickChess == null && piece != null && "".equals(piece.getName())) {
+                        //翻棋
+                        piece.setName(piece.getHiddenName());
+                        //交换先后手
+                        isCanMove = !isCanMove;
                     } else {
-                        boolean isMove = checkPiece(pickChess, x, y);
-                        movePiece(isMove, x, y);
+                        //走棋
+                        boolean conformityRule = checkPiece(pickChess, x, y);
+                        movePiece(conformityRule, x, y);
                     }
-                    //交换先后手
-                    isCanMove = !isCanMove;
                     checkerboard.repaint();
                 }
             }
         });
+    }
+
+    private void popInfo(String message) {
+        JOptionPane.showMessageDialog(null, message, "提示", JOptionPane.WARNING_MESSAGE);
     }
 
     //判断和玩家相同阵营的棋子有没有被选中的
@@ -117,28 +127,32 @@ public class ClientView extends JFrame implements ActionListener {
     private boolean checkPiece(Piece pickChess, int x, int y) {
         boolean isMove = false;
         //我方阵营有没有棋子被选中，是否轮到我走棋，是否可以落子
-        if (pickChess != null && isCanMove && rule.getRule(pickChess, x, y)) {
-            Piece target = checkerboard.pieceList[x][y];
-            //走棋
-            pieceMove(pickChess, target, x, y);
-            //重绘
-            checkerboard.repaint();
-            userCamp = !userCamp;
-            // 判断是否分出胜负
-            if (target != null) {
-                isWinning(target, x, y);
+        if (pickChess != null) {
+            if (rule.getRule(pickChess, x, y)) {
+                Piece target = checkerboard.pieceList[x][y];
+                //走棋
+                pieceMove(pickChess, target, x, y);
+                //重绘
+                checkerboard.repaint();
+                userCamp = !userCamp;
+                // 判断是否分出胜负
+                if (target != null) {
+                    isWinning(target, x, y);
+                }
+                isMove = true;
+            } else if (checkerboard.pieceList[x][y].isCamp() != userCamp) {
+                popInfo("不符合规则！");
             }
-            isMove = true;
         }
         return isMove;
     }
 
-    private void movePiece(boolean isMove, int x, int y) {
+    private void movePiece(boolean conformityRule, int x, int y) {
         //判断是否落子，点击的地方是否为空
-        if (!isMove && isEmtry(x, y) != null) {
+        if (!conformityRule && isEmtry(x, y) != null) {
             Piece piece = checkerboard.pieceList[x][y];
             // 判断该棋子阵营和玩家是否相同
-            if (piece.isCamp() == userCamp) {
+            if (piece.isCamp() == userCamp && !"".equals(piece.getName())) {
                 // 设置棋子的选中状态
                 piece.setSelection(!piece.isSelection());
                 //上一步棋子取消选中
@@ -148,6 +162,10 @@ public class ClientView extends JFrame implements ActionListener {
                 preX = x;
                 preY = y;
             }
+        }
+        //符合规则交换先后手
+        if (conformityRule) {
+            isCanMove = !isCanMove;
         }
     }
 

@@ -46,7 +46,8 @@ public class Rule {
         }
         //炮或砲
         if (piece.getLevel() == 1) {
-            if (target != null && target.isCamp() != piece.isCamp()) {
+            //不同阵营或未翻
+            if (target != null && (target.isCamp() != piece.isCamp() || "".equals(target.getName()))) {
                 int num = 0;
                 if (piece.getX() == x) {
                     for (int i = start + 1; i < end; i++) {

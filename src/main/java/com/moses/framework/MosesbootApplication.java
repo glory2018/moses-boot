@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)
 @EnableAsync
-@MapperScan("com.ibm.mosesboot.*.mapper")
+@MapperScan("com.moses.framework.samples.*.mapper")
 public class MosesbootApplication {
     public static void main(String[] args) {
         SpringApplication.run(MosesbootApplication.class, args);
