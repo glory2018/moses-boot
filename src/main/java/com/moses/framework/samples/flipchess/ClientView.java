@@ -123,15 +123,17 @@ public class ClientView extends JFrame implements ActionListener {
                 checkerboard.pieceList[x][y].setY(y);
                 checkerboard.pieceList[x][y].setSelection(false);
             }
-            userCamp = !userCamp;
             // 判断是否分出胜负
             isWinning(downChess);
+            userCamp = !userCamp;
         } else {
             if (downChess == null) {
                 popInfo("不符合走动规则！");
             } else {
                 if ("".equals(downChess.getName())) {
-                    popInfo("棋子未翻吃不了！");
+                    if (upChess.getLevel() != 1) {
+                        popInfo("棋子未翻吃不了！");
+                    }
                 } else if (downChess.isCamp() == userCamp) {
                     popInfo("不能吃己方棋子！");
                 } else {
