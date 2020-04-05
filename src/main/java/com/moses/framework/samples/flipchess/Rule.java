@@ -8,7 +8,6 @@ package com.moses.framework.samples.flipchess;
 public class Rule {
     //棋盘
     Checkerboard checkerboard;
-
     public Rule(Checkerboard checkerboard) {
         this.checkerboard = checkerboard;
     }

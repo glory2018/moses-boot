@@ -133,7 +133,7 @@ public class ClientView extends JFrame implements ActionListener {
                 if ("".equals(downChess.getName())) {
                     popInfo("棋子未翻吃不了！");
                 } else if (downChess.isCamp() == userCamp) {
-                    popInfo("不能吃自己方棋子！");
+                    popInfo("不能吃己方棋子！");
                 } else {
                     popInfo("不符合吃子规则！");
                 }
