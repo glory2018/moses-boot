@@ -52,36 +52,36 @@ public class LoginController {
     /**
      * 获取验证码 的 请求路径
      *
-     * @param httpServletRequest
-     * @param httpServletResponse
+     * @param request
+     * @param response
      * @throws Exception
      */
-    @RequestMapping("/getCaptchaCode")
-    public void getCaptchaCode(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
+    @RequestMapping("/checkCode")
+    public void checkCode(HttpServletRequest request, HttpServletResponse response) throws Exception {
         byte[] captchaChallengeAsJpeg = null;
         ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
         try {
             //生产验证码字符串并保存到session中
             String createText = captchaProducer.createText();
-            httpServletRequest.getSession().setAttribute("vrifyCode", createText);
+            request.getSession().setAttribute("vrifyCode", createText);
             //使用生产的验证码字符串返回一个BufferedImage对象并转为byte写入到byte数组中
             BufferedImage challenge = captchaProducer.createImage(createText);
             ImageIO.write(challenge, "jpg", jpegOutputStream);
         } catch (IllegalArgumentException e) {
-            httpServletResponse.sendError(HttpServletResponse.SC_NOT_FOUND);
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
         //定义response输出类型为image/jpeg类型，使用response输出流输出图片的byte数组
         captchaChallengeAsJpeg = jpegOutputStream.toByteArray();
-        httpServletResponse.setHeader("Cache-Control", "no-store");
-        httpServletResponse.setHeader("Pragma", "no-cache");
-        httpServletResponse.setDateHeader("Expires", 0);
-        httpServletResponse.setContentType("image/jpeg");
-        ServletOutputStream responseOutputStream =
-                httpServletResponse.getOutputStream();
-        responseOutputStream.write(captchaChallengeAsJpeg);
-        responseOutputStream.flush();
-        responseOutputStream.close();
+        //服务器通知浏览器不要缓存
+        response.setHeader("Cache-Control", "no-store");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+        response.setContentType("image/jpeg");
+        ServletOutputStream outputStream = response.getOutputStream();
+        outputStream.write(captchaChallengeAsJpeg);
+        outputStream.flush();
+        outputStream.close();
     }
 
     /**

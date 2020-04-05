@@ -64,12 +64,16 @@ public class Rule {
                 }
                 if (num == 1) {
                     return true;
+                } else {
+                    return false;
                 }
             }
         } else if (end - start == 1) {
+            //走步
             if (target == null) {
                 return true;
-            } else if (target.isCamp() != piece.isCamp()) {
+            } else if (!"".equals(target.getName()) && target.isCamp() != piece.isCamp()) {
+                //已翻且不同阵营
                 return (piece.getLevel() == 0 && target.getLevel() == 6) || (target.getLevel() == 0 && target.getLevel() < 6) || (piece.getLevel() >= target.getLevel());
             }
         }

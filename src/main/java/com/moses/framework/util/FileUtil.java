@@ -11,9 +11,7 @@
  */
 package com.moses.framework.util;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * <p>
@@ -71,5 +69,70 @@ public class FileUtil {
      */
     public static String getSystemLineSeparator() {
         return System.getProperty("line.separator");
+    }
+
+    /**
+     * 复制单个文件
+     *
+     * @param oldFile String 原文件路径 如：c:/fqf.txt
+     * @param newFile String 复制后路径 如：f:/fqf.txt
+     * @return boolean
+     */
+    public static void copyFile(String oldFile, String newFile) {
+        try {
+            if (new File(oldFile).exists()) {
+                FileInputStream input = new FileInputStream(oldFile);
+                FileOutputStream output = new FileOutputStream(newFile);
+                byte[] b = new byte[1024 * 5];
+                int len;
+                while ((len = input.read(b)) != -1) {
+                    output.write(b, 0, len);
+                }
+                output.flush();
+                output.close();
+                input.close();
+            }
+        } catch (Exception e) {
+            System.out.println("复制单个文件操作出错");
+            e.printStackTrace();
+        }
+    }
+
+    public static void copyFile(String oldPath, String newPath, String oldName, String newName) {
+        copyFile(oldPath + File.separator + oldName, newPath + File.separator + newName);
+    }
+
+    /**
+     * 复制整个文件夹内容
+     *
+     * @param oldPath String 原文件路径 如：c:/fqf
+     * @param newPath String 复制后路径 如：f:/fqf/ff
+     * @return boolean
+     */
+    public static void copyFolder(String oldPath, String newPath) {
+        try {
+            // 如果文件夹不存在 则建立新文件夹
+            (new File(newPath)).mkdirs();
+            String[] files = new File(oldPath).list();
+            File temp = null;
+            String oldFile, newFile;
+            for (int i = 0; i < files.length; i++) {
+                oldFile = oldPath + File.separator + files[i];
+                newFile = newPath + File.separator + files[i];
+                temp = new File(oldFile);
+                if (temp.isDirectory()) {
+                    copyFolder(oldFile, newFile);
+                } else if (temp.isFile()) {
+                    copyFile(oldFile, newFile);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("复制整个文件夹内容操作出错");
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        copyFolder("C:\\Project\\Moses\\spring-boot-healthy\\src\\main\\resources\\templates", "C:\\Project\\Moses\\spring-boot-healthy\\src\\main\\resources\\aa");
     }
 }
