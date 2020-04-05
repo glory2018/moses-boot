@@ -130,15 +130,7 @@ public class ClientView extends JFrame implements ActionListener {
             if (downChess == null) {
                 popInfo("不符合走动规则！");
             } else {
-                if ("".equals(downChess.getName())) {
-                    if (upChess.getLevel() != 1) {
-                        popInfo("棋子未翻吃不了！");
-                    }
-                } else if (downChess.isCamp() == userCamp) {
-                    popInfo("不能吃己方棋子！");
-                } else {
-                    popInfo("不符合吃子规则！");
-                }
+                popInfo("不符合移动规则！");
             }
         }
     }
@@ -175,7 +167,7 @@ public class ClientView extends JFrame implements ActionListener {
      */
     public void isWinning(Piece target) {
         if (target != null && target.getLevel() == 6) {
-            JOptionPane.showMessageDialog(this, target.isCamp() ? "红方胜利" : "黑方胜利", "游戏结束", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(this, target.isCamp() ? "黑方胜利" : "红方胜利", "游戏结束", JOptionPane.PLAIN_MESSAGE);
             checkerboard.initPiece(false);
         }
     }

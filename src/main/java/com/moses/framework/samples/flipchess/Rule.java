@@ -42,7 +42,13 @@ public class Rule {
                     return true;
                 } else if (!"".equals(downChess.getName()) && downChess.isCamp() != upChess.isCamp()) {
                     //已翻且不同阵营
-                    return (upChess.getLevel() == 0 && downChess.getLevel() == 6) || (downChess.getLevel() == 0 && downChess.getLevel() < 6) || (upChess.getLevel() >= downChess.getLevel());
+                    if (downChess.getLevel() == 0) {
+                        return upChess.getLevel() < 6;
+                    } else if (downChess.getLevel() == 6) {
+                        return upChess.getLevel() == 0 || upChess.getLevel() == 6;
+                    } else {
+                        return upChess.getLevel() >= downChess.getLevel();
+                    }
                 }
             }
         }
