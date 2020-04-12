@@ -22,4 +22,5 @@ target/
 /nbbuild/
 /dist/
 /nbdist/
-/.nb-gradle/
+/.nb-gradle/moses-boot-travel.iml
+moses-boot-travel.iml

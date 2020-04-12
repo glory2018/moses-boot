@@ -3,7 +3,9 @@
  * @description: com.ibm.mosesboot.exam.Test
  * @version V1.0
  */
-package com.ibm.mosesboot.exam;
+package com.ibm.mosesboot.exam.sort;
+
+import com.ibm.mosesboot.exam.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

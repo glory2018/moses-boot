@@ -3,7 +3,7 @@
  * @description: com.ibm.mosesboot.exam.TryCatchTest
  * @version V1.0
  */
-package com.ibm.mosesboot.exam;
+package com.ibm.mosesboot.exam.finall;
 
 /**
  * @author Moses
