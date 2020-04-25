@@ -3,7 +3,7 @@
  * @description: com.ibm.mosesboot.exam.sky.Test4
  * @version V1.0
  */
-package com.ibm.mosesboot.exam.sky;
+package com.ibm.mosesboot.exam.antiy;
 
 /**
  * @author Moses

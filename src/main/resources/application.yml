@@ -34,11 +34,11 @@ spring:
     #邮件协议smtp
     host: smtp.qq.com
     #发送者的邮件的用户名
-    username: 287664409@qq.com
+    username: XXX@qq.com
     #使用的编码
     default-encoding: utf-8
     #移动端客户授权码(在邮箱中设置)
-    password: digwjstljssobgjj
+    password: XXXXX
 mybatis-plus:
   mapper-locations: classpath*:mapper/*/*.xml
   configuration:

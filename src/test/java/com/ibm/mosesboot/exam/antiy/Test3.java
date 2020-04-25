@@ -3,7 +3,7 @@
  * @description: com.ibm.mosesboot.exam.sky.Test3
  * @version V1.0
  */
-package com.ibm.mosesboot.exam.sky;
+package com.ibm.mosesboot.exam.antiy;
 
 import java.util.HashMap;
 import java.util.Map;
