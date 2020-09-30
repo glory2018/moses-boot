@@ -1,7 +1,7 @@
 /**
  * Copyright &copy; 2017 Fang.com All rights reserved.
  */
-package com.ibm.mosesboot.util;
+package com.moses.framework.samples.util;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

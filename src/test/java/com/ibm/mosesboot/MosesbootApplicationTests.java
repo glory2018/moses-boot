@@ -1,4 +1,4 @@
-package com.ibm.mosesboot;
+package com.moses.framework.samples;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.ibm.mosesboot.util;
+package com.moses.framework.samples.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

@@ -1,5 +1,7 @@
 package com.moses.framework.freemarker;
 
+import com.moses.framework.freemarker.bean.RichObject;
+import com.moses.framework.samples.export.entity.TemplateConfig;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -7,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,9 +47,7 @@ public class Freemarker {
     private static Template getTemplate(String templateName) {
         logger.debug("Freemarker getTemplate");
         try {
-            Template template = configuration.getTemplate(templateName);
-            template.setEncoding("UTF-8");
-            return template;
+            return configuration.getTemplate(templateName, "UTF-8");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,6 +67,7 @@ public class Freemarker {
         try {
             getInstance(templatePath);
             Template template = getTemplate(templateName);
+            template.setOutputEncoding("UTF-8");
             Writer out = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
             template.process(dataMap, out);
             out.close();
@@ -78,5 +81,27 @@ public class Freemarker {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    public static String getRichContent(RichObject richObject, String content) throws Exception {
+        richObject.setHtml(content);
+        RichHtmlHandler richHtmlHandler = WordGeneratorWithFreemarker.createRichHtmlHandler(richObject);
+        List<RichHtmlHandler> richHtmlHandlerList = new ArrayList<RichHtmlHandler>();
+        richHtmlHandlerList.add(richHtmlHandler);
+        return richHtmlHandler.getHandledDocBodyBlock();
+    }
+
+    public static RichObject getRichObject(TemplateConfig templateConfig) {
+        RichObject richObject = new RichObject();
+        //--------------------此处可以spring配置文件配置，也可以直接读取属性文件获取------------------
+        richObject.setDocSrcLocationPrex("file:///C:/" + templateConfig.getLocationPrex());
+        richObject.setDocSrcParent(templateConfig.getTemplateName() + ".files");
+        richObject.setNextPartId(templateConfig.getNextPartId());
+        richObject.setShapeidPrex("_x56fe__x7247__x0020");
+        richObject.setTypeid("#_x0000_t75");
+        richObject.setSpidPrex("_x0000_i");
+        richObject.setWebAppliction(false);
+        //-----------------------------------------
+        return richObject;
     }
 }

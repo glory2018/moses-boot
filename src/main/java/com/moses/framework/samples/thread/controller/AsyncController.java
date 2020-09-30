@@ -1,6 +1,6 @@
 /*
  * Copyright © 2020 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.asynchronous.UserController
+ * @description: com.moses.framework.samples.asynchronous.UserController
  * @version V1.0
  */
 package com.moses.framework.samples.thread.controller;

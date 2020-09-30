@@ -1,9 +1,9 @@
 /*
  * Copyright © 2019 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.assignment.SalaryInput
+ * @description: com.moses.framework.samples.assignment.SalaryInput
  * @version V1.0
  */
-package com.ibm.mosesboot.assignment;
+package com.moses.framework.samples.assignment;
 
 /**
  * @author Moses

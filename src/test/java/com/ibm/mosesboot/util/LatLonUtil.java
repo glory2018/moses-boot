@@ -1,4 +1,4 @@
-package com.ibm.mosesboot.util;
+package com.moses.framework.samples.util;
 
 public class LatLonUtil {
     private static double PI = 3.14159265;

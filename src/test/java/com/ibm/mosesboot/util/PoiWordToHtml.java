@@ -3,7 +3,7 @@
  * @description: com.ibm.PoiWordToHtml
  * @version V1.0
  */
-package com.ibm.mosesboot.util;
+package com.moses.framework.samples.util;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.hwpf.HWPFDocumentCore;

@@ -1,9 +1,9 @@
 /*
  * Copyright © 2020 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.exam.User
+ * @description: com.moses.framework.samples.exam.User
  * @version V1.0
  */
-package com.ibm.mosesboot.exam;
+package com.moses.framework.samples.exam;
 
 import java.util.Date;
 

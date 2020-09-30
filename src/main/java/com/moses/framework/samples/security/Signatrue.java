@@ -21,7 +21,7 @@ public class Signatrue {
         for (int i = 0; i < len; i++) {
             Provider p = pros[i];
             System.out
-                    .println("Provider " + p.getName() + " " + p.getVersionStr());
+                    .println("Provider " + p.getName() + " " + p.getVersion());
             System.out.println("   Surported Signatrue algoritms:");
             Set keys = p.keySet();
             Iterator ite = keys.iterator();

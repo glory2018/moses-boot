@@ -1,6 +1,6 @@
 /*
  * Copyright © 2019 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.util.FreemarkerUtils
+ * @description: com.moses.framework.samples.util.FreemarkerUtils
  * @version V1.0
  */
 package com.moses.framework.freemarker.util.rich;

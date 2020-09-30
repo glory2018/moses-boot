@@ -1,6 +1,6 @@
 /*
  * Copyright © 2019 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.config.MybatisPlusConfig
+ * @description: com.moses.framework.samples.config.MybatisPlusConfig
  * @version V1.0
  */
 package com.moses.framework.config;

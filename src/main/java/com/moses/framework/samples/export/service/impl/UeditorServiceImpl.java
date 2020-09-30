@@ -1,6 +1,6 @@
 /*
  * Copyright © 2019 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.service.impl.SalaryPOServiceImpl
+ * @description: com.moses.framework.samples.service.impl.SalaryPOServiceImpl
  * @version V1.0
  */
 package com.moses.framework.samples.export.service.impl;
@@ -38,7 +38,7 @@ public class UeditorServiceImpl implements IUeditorService {
 
     @Override
     public void save(Ueditor ueditor) {
-        ueditorMapper.insert(ueditor);
+        ueditorMapper.updateById(ueditor);
     }
 
     @Override

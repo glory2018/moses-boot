@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moses.framework.samples.export.mapper.DomesticDetailMapper">
+  <resultMap id="BaseResultMap" type="com.moses.framework.samples.export.entity.DomesticDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="domestic_id" jdbcType="INTEGER" property="domesticId" />
+    <result column="risk_name" jdbcType="VARCHAR" property="riskName" />
+    <result column="confm_amount" jdbcType="VARCHAR" property="confmAmount" />
+    <result column="d_d" jdbcType="VARCHAR" property="dD" />
+    <result column="confm_prem" jdbcType="VARCHAR" property="confmPrem" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, domestic_id, risk_name, confm_amount, d_d, confm_prem
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from doc_domestic_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectList" resultType="com.moses.framework.samples.export.entity.DomesticDetail">
+      select * from doc_domestic_detail
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from doc_domestic_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.moses.framework.samples.export.entity.DomesticDetail">
+    insert into doc_domestic_detail (id, domestic_id, risk_name, 
+      confm_amount, d_d, confm_prem
+      )
+    values (#{id,jdbcType=INTEGER}, #{domesticId,jdbcType=INTEGER}, #{riskName,jdbcType=VARCHAR}, 
+      #{confmAmount,jdbcType=VARCHAR}, #{dD,jdbcType=VARCHAR}, #{confmPrem,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.moses.framework.samples.export.entity.DomesticDetail">
+    insert into doc_domestic_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="domesticId != null">
+        domestic_id,
+      </if>
+      <if test="riskName != null">
+        risk_name,
+      </if>
+      <if test="confmAmount != null">
+        confm_amount,
+      </if>
+      <if test="dD != null">
+        d_d,
+      </if>
+      <if test="confmPrem != null">
+        confm_prem,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="domesticId != null">
+        #{domesticId,jdbcType=INTEGER},
+      </if>
+      <if test="riskName != null">
+        #{riskName,jdbcType=VARCHAR},
+      </if>
+      <if test="confmAmount != null">
+        #{confmAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="dD != null">
+        #{dD,jdbcType=VARCHAR},
+      </if>
+      <if test="confmPrem != null">
+        #{confmPrem,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.moses.framework.samples.export.entity.DomesticDetail">
+    update doc_domestic_detail
+    <set>
+      <if test="domesticId != null">
+        domestic_id = #{domesticId,jdbcType=INTEGER},
+      </if>
+      <if test="riskName != null">
+        risk_name = #{riskName,jdbcType=VARCHAR},
+      </if>
+      <if test="confmAmount != null">
+        confm_amount = #{confmAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="dD != null">
+        d_d = #{dD,jdbcType=VARCHAR},
+      </if>
+      <if test="confmPrem != null">
+        confm_prem = #{confmPrem,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.moses.framework.samples.export.entity.DomesticDetail">
+    update doc_domestic_detail
+    set domestic_id = #{domesticId,jdbcType=INTEGER},
+      risk_name = #{riskName,jdbcType=VARCHAR},
+      confm_amount = #{confmAmount,jdbcType=VARCHAR},
+      d_d = #{dD,jdbcType=VARCHAR},
+      confm_prem = #{confmPrem,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

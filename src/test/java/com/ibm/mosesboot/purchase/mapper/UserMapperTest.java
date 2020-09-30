@@ -3,7 +3,7 @@
  * Copyright (C) 2018 IBM All rights reserved.
  *
  ********* K*I*N*G ********** B*A*C*K *******/
-package com.ibm.mosesboot.purchase.mapper;
+package com.moses.framework.samples.purchase.mapper;
 
 import com.moses.framework.user.entity.User;
 import com.moses.framework.user.mapper.UserMapper;
@@ -22,7 +22,7 @@ import java.util.List;
  * @Date 2019/1/21 15:42
  */
 @RunWith(SpringRunner.class)
-@MapperScan("com.ibm.mosesboot.*.mapper")
+@MapperScan("com.moses.framework.samples.*.mapper")
 @SpringBootTest
 public class UserMapperTest {
     @Autowired

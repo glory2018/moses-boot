@@ -3,7 +3,7 @@
  * <p>
  * $Id: PropertiesLoader.java 1690 2012-02-22 13:42:00Z calvinxiu $
  */
-package com.ibm.mosesboot.util;
+package com.moses.framework.samples.util;
 
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;

@@ -2,7 +2,7 @@
  * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights
  * reserved.
  */
-package com.ibm.mosesboot.util;
+package com.moses.framework.samples.util;
 
 import java.io.*;
 

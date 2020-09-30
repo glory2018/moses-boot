@@ -1,11 +1,11 @@
 /*
  * Copyright © 2020 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.exam.Test
+ * @description: com.moses.framework.samples.exam.Test
  * @version V1.0
  */
-package com.ibm.mosesboot.exam.sort;
+package com.moses.framework.samples.exam.sort;
 
-import com.ibm.mosesboot.exam.User;
+import com.moses.framework.samples.exam.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

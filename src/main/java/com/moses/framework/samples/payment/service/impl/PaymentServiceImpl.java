@@ -1,6 +1,6 @@
 /*
  * Copyright © 2019 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.service.impl.SalaryPOServiceImpl
+ * @description: com.moses.framework.samples.service.impl.SalaryPOServiceImpl
  * @version V1.0
  */
 package com.moses.framework.samples.payment.service.impl;

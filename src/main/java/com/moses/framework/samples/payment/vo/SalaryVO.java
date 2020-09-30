@@ -1,6 +1,6 @@
 /*
  * Copyright © 2019 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.entity.Payment
+ * @description: com.moses.framework.samples.entity.Payment
  * @version V1.0
  */
 package com.moses.framework.samples.payment.vo;

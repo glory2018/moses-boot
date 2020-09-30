@@ -1,9 +1,9 @@
 /*
  * Copyright © 2019 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.assignment.SalaryPrediction
+ * @description: com.moses.framework.samples.assignment.SalaryPrediction
  * @version V1.0
  */
-package com.ibm.mosesboot.assignment;
+package com.moses.framework.samples.assignment;
 
 import com.google.common.collect.Lists;
 

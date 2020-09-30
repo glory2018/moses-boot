@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moses.framework.samples.export.mapper.AbroadDetailMapper">
+  <resultMap id="BaseResultMap" type="com.moses.framework.samples.export.entity.AbroadDetail">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="insurance_id" jdbcType="INTEGER" property="insuranceId" />
+    <result column="risk_name" jdbcType="VARCHAR" property="riskName" />
+    <result column="confm_amount" jdbcType="VARCHAR" property="confmAmount" />
+    <result column="deductible" jdbcType="VARCHAR" property="deductible" />
+    <result column="confm_prem" jdbcType="VARCHAR" property="confmPrem" />
+    <result column="cost_cnpc" jdbcType="VARCHAR" property="costCnpc" />
+  </resultMap>
+  <insert id="insert" parameterType="com.moses.framework.samples.export.entity.AbroadDetail">
+    insert into doc_abroad_detail (id, insurance_id, risk_name, 
+      confm_amount, deductible, confm_prem, 
+      cost_cnpc)
+    values (#{id,jdbcType=INTEGER}, #{insuranceId,jdbcType=INTEGER}, #{riskName,jdbcType=VARCHAR}, 
+      #{confmAmount,jdbcType=VARCHAR}, #{deductible,jdbcType=VARCHAR}, #{confmPrem,jdbcType=VARCHAR}, 
+      #{costCnpc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.moses.framework.samples.export.entity.AbroadDetail">
+    insert into doc_abroad_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="insuranceId != null">
+        insurance_id,
+      </if>
+      <if test="riskName != null">
+        risk_name,
+      </if>
+      <if test="confmAmount != null">
+        confm_amount,
+      </if>
+      <if test="deductible != null">
+        deductible,
+      </if>
+      <if test="confmPrem != null">
+        confm_prem,
+      </if>
+      <if test="costCnpc != null">
+        cost_cnpc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceId != null">
+        #{insuranceId,jdbcType=INTEGER},
+      </if>
+      <if test="riskName != null">
+        #{riskName,jdbcType=VARCHAR},
+      </if>
+      <if test="confmAmount != null">
+        #{confmAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="deductible != null">
+        #{deductible,jdbcType=VARCHAR},
+      </if>
+      <if test="confmPrem != null">
+        #{confmPrem,jdbcType=VARCHAR},
+      </if>
+      <if test="costCnpc != null">
+        #{costCnpc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+    <select id="selectList" resultType="com.moses.framework.samples.export.entity.AbroadDetail">
+      select
+      *
+      from doc_abroad_detail
+      where id = #{id,jdbcType=INTEGER}
+    </select>
+</mapper>

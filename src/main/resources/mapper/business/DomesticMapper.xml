@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moses.framework.samples.export.mapper.DomesticMapper">
+  <resultMap id="BaseResultMap" type="com.moses.framework.samples.export.entity.Domestic">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="template_id" jdbcType="INTEGER" property="templateId" />
+    <result column="project_name_c_n" jdbcType="VARCHAR" property="projectNameCN" />
+    <result column="country_code_name" jdbcType="VARCHAR" property="countryCodeName" />
+    <result column="policy_insured" jdbcType="VARCHAR" property="policyInsured" />
+    <result column="passwd_set_date" jdbcType="VARCHAR" property="passwdSetDate" />
+    <result column="group_equity" jdbcType="VARCHAR" property="groupEquity" />
+    <result column="share_c_n_p_c" jdbcType="VARCHAR" property="shareCNPC" />
+    <result column="linfen" jdbcType="VARCHAR" property="linfen" />
+    <result column="cost" jdbcType="DECIMAL" property="cost" />
+    <result column="e_s_g_p" jdbcType="VARCHAR" property="eSGP" />
+    <result column="brokercname" jdbcType="VARCHAR" property="brokercname" />
+    <result column="deduction" jdbcType="VARCHAR" property="deduction" />
+    <result column="bill_com_name" jdbcType="VARCHAR" property="billComName" />
+    <result column="chief" jdbcType="VARCHAR" property="chief" />
+    <result column="info_list" jdbcType="VARCHAR" property="infoList" />
+    <result column="sumpaid" jdbcType="VARCHAR" property="sumpaid" />
+    <result column="cosremark" jdbcType="VARCHAR" property="cosremark" />
+    <result column="operateuser" jdbcType="VARCHAR" property="operateuser" />
+    <result column="claim_date" jdbcType="VARCHAR" property="claimDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, template_id, project_name_c_n, country_code_name, policy_insured, passwd_set_date, 
+    group_equity, share_c_n_p_c, linfen, cost, e_s_g_p, brokercname, deduction, bill_com_name, 
+    chief, info_list, sumpaid, cosremark, operateuser, claim_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from doc_domestic
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from doc_domestic
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.moses.framework.samples.export.entity.Domestic">
+    insert into doc_domestic (id, template_id, project_name_c_n, 
+      country_code_name, policy_insured, passwd_set_date, 
+      group_equity, share_c_n_p_c, linfen, 
+      cost, e_s_g_p, brokercname, 
+      deduction, bill_com_name, chief, 
+      info_list, sumpaid, cosremark, 
+      operateuser, claim_date)
+    values (#{id,jdbcType=INTEGER}, #{templateId,jdbcType=INTEGER}, #{projectNameCN,jdbcType=VARCHAR}, 
+      #{countryCodeName,jdbcType=VARCHAR}, #{policyInsured,jdbcType=VARCHAR}, #{passwdSetDate,jdbcType=VARCHAR}, 
+      #{groupEquity,jdbcType=VARCHAR}, #{shareCNPC,jdbcType=VARCHAR}, #{linfen,jdbcType=VARCHAR}, 
+      #{cost,jdbcType=DECIMAL}, #{eSGP,jdbcType=VARCHAR}, #{brokercname,jdbcType=VARCHAR}, 
+      #{deduction,jdbcType=VARCHAR}, #{billComName,jdbcType=VARCHAR}, #{chief,jdbcType=VARCHAR}, 
+      #{infoList,jdbcType=VARCHAR}, #{sumpaid,jdbcType=VARCHAR}, #{cosremark,jdbcType=VARCHAR}, 
+      #{operateuser,jdbcType=VARCHAR}, #{claimDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.moses.framework.samples.export.entity.Domestic">
+    insert into doc_domestic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="templateId != null">
+        template_id,
+      </if>
+      <if test="projectNameCN != null">
+        project_name_c_n,
+      </if>
+      <if test="countryCodeName != null">
+        country_code_name,
+      </if>
+      <if test="policyInsured != null">
+        policy_insured,
+      </if>
+      <if test="passwdSetDate != null">
+        passwd_set_date,
+      </if>
+      <if test="groupEquity != null">
+        group_equity,
+      </if>
+      <if test="shareCNPC != null">
+        share_c_n_p_c,
+      </if>
+      <if test="linfen != null">
+        linfen,
+      </if>
+      <if test="cost != null">
+        cost,
+      </if>
+      <if test="eSGP != null">
+        e_s_g_p,
+      </if>
+      <if test="brokercname != null">
+        brokercname,
+      </if>
+      <if test="deduction != null">
+        deduction,
+      </if>
+      <if test="billComName != null">
+        bill_com_name,
+      </if>
+      <if test="chief != null">
+        chief,
+      </if>
+      <if test="infoList != null">
+        info_list,
+      </if>
+      <if test="sumpaid != null">
+        sumpaid,
+      </if>
+      <if test="cosremark != null">
+        cosremark,
+      </if>
+      <if test="operateuser != null">
+        operateuser,
+      </if>
+      <if test="claimDate != null">
+        claim_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="projectNameCN != null">
+        #{projectNameCN,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCodeName != null">
+        #{countryCodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="policyInsured != null">
+        #{policyInsured,jdbcType=VARCHAR},
+      </if>
+      <if test="passwdSetDate != null">
+        #{passwdSetDate,jdbcType=VARCHAR},
+      </if>
+      <if test="groupEquity != null">
+        #{groupEquity,jdbcType=VARCHAR},
+      </if>
+      <if test="shareCNPC != null">
+        #{shareCNPC,jdbcType=VARCHAR},
+      </if>
+      <if test="linfen != null">
+        #{linfen,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null">
+        #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="eSGP != null">
+        #{eSGP,jdbcType=VARCHAR},
+      </if>
+      <if test="brokercname != null">
+        #{brokercname,jdbcType=VARCHAR},
+      </if>
+      <if test="deduction != null">
+        #{deduction,jdbcType=VARCHAR},
+      </if>
+      <if test="billComName != null">
+        #{billComName,jdbcType=VARCHAR},
+      </if>
+      <if test="chief != null">
+        #{chief,jdbcType=VARCHAR},
+      </if>
+      <if test="infoList != null">
+        #{infoList,jdbcType=VARCHAR},
+      </if>
+      <if test="sumpaid != null">
+        #{sumpaid,jdbcType=VARCHAR},
+      </if>
+      <if test="cosremark != null">
+        #{cosremark,jdbcType=VARCHAR},
+      </if>
+      <if test="operateuser != null">
+        #{operateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="claimDate != null">
+        #{claimDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.moses.framework.samples.export.entity.Domestic">
+    update doc_domestic
+    <set>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=INTEGER},
+      </if>
+      <if test="projectNameCN != null">
+        project_name_c_n = #{projectNameCN,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCodeName != null">
+        country_code_name = #{countryCodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="policyInsured != null">
+        policy_insured = #{policyInsured,jdbcType=VARCHAR},
+      </if>
+      <if test="passwdSetDate != null">
+        passwd_set_date = #{passwdSetDate,jdbcType=VARCHAR},
+      </if>
+      <if test="groupEquity != null">
+        group_equity = #{groupEquity,jdbcType=VARCHAR},
+      </if>
+      <if test="shareCNPC != null">
+        share_c_n_p_c = #{shareCNPC,jdbcType=VARCHAR},
+      </if>
+      <if test="linfen != null">
+        linfen = #{linfen,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null">
+        cost = #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="eSGP != null">
+        e_s_g_p = #{eSGP,jdbcType=VARCHAR},
+      </if>
+      <if test="brokercname != null">
+        brokercname = #{brokercname,jdbcType=VARCHAR},
+      </if>
+      <if test="deduction != null">
+        deduction = #{deduction,jdbcType=VARCHAR},
+      </if>
+      <if test="billComName != null">
+        bill_com_name = #{billComName,jdbcType=VARCHAR},
+      </if>
+      <if test="chief != null">
+        chief = #{chief,jdbcType=VARCHAR},
+      </if>
+      <if test="infoList != null">
+        info_list = #{infoList,jdbcType=VARCHAR},
+      </if>
+      <if test="sumpaid != null">
+        sumpaid = #{sumpaid,jdbcType=VARCHAR},
+      </if>
+      <if test="cosremark != null">
+        cosremark = #{cosremark,jdbcType=VARCHAR},
+      </if>
+      <if test="operateuser != null">
+        operateuser = #{operateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="claimDate != null">
+        claim_date = #{claimDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.moses.framework.samples.export.entity.Domestic">
+    update doc_domestic
+    set template_id = #{templateId,jdbcType=INTEGER},
+      project_name_c_n = #{projectNameCN,jdbcType=VARCHAR},
+      country_code_name = #{countryCodeName,jdbcType=VARCHAR},
+      policy_insured = #{policyInsured,jdbcType=VARCHAR},
+      passwd_set_date = #{passwdSetDate,jdbcType=VARCHAR},
+      group_equity = #{groupEquity,jdbcType=VARCHAR},
+      share_c_n_p_c = #{shareCNPC,jdbcType=VARCHAR},
+      linfen = #{linfen,jdbcType=VARCHAR},
+      cost = #{cost,jdbcType=DECIMAL},
+      e_s_g_p = #{eSGP,jdbcType=VARCHAR},
+      brokercname = #{brokercname,jdbcType=VARCHAR},
+      deduction = #{deduction,jdbcType=VARCHAR},
+      bill_com_name = #{billComName,jdbcType=VARCHAR},
+      chief = #{chief,jdbcType=VARCHAR},
+      info_list = #{infoList,jdbcType=VARCHAR},
+      sumpaid = #{sumpaid,jdbcType=VARCHAR},
+      cosremark = #{cosremark,jdbcType=VARCHAR},
+      operateuser = #{operateuser,jdbcType=VARCHAR},
+      claim_date = #{claimDate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,9 +1,9 @@
 /*
  * Copyright © 2020 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.exam.TryCatchTest
+ * @description: com.moses.framework.samples.exam.TryCatchTest
  * @version V1.0
  */
-package com.ibm.mosesboot.exam.finall;
+package com.moses.framework.samples.exam.finall;
 
 /**
  * @author Moses

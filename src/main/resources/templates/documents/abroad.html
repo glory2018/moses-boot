@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" href="/js/bootstrap-4.3.1/css/bootstrap.min.css">
+    <script charset="utf-8" src="/js/jquery-3.4.1.min.js"></script>
+    <script charset="utf-8" src="/js/ueditor/ueditor.config.js"></script>
+    <script charset="utf-8" src="/js/ueditor/ueditor.all.js"></script>
+    <script charset="utf-8" src="/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript">
+        //实例化编辑器
+        //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+        var infoList = UE.getEditor('infoList');
+        var cosremark = UE.getEditor('cosremark');
+
+        $(function () {
+            var cosremarkData = "[[${abroad.cosremark}]]";
+            cosremark.ready(function () {
+                cosremark.setContent(cosremarkData, false);
+            });
+            var infoListData = "[[${abroad.infoList}]]";
+            infoList.ready(function () {
+                infoList.setContent(infoListData, false);
+            });
+        });
+
+        function save() {
+            var param = {
+                "id": $("#id").val(),
+                "templateId": $("#templateId").val(),
+                "projectNameCN": $("#projectNameCN").val(),
+                "cosremark": cosremark.getContent(),
+                "infoList": infoList.getContent()
+            };
+            $.ajax({
+                url: "/abroad/save",
+                type: "post",
+                data: JSON.stringify(param),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    alert(data);
+                }
+            })
+        }
+
+        function ftlExport() {
+            window.open("/abroad/ftlExport/" + $("#id").val());
+        }
+
+        function downloadFile() {
+            window.open("/abroad/downloadFile");
+        }
+    </script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+
+    <h1>文档导出</h1>
+    <button type="button" class="btn btn-lg btn-primary" onclick="save()">保存</button>
+    <button type="button" class="btn btn-lg btn-primary" onclick="ftlExport()">导出</button>
+<!--    <button type="button" class="btn btn-lg btn-primary" onclick="downloadFile()">下载</button>-->
+    <div class="form-group row">
+        <label for="templateId" class="col-sm-2 col-form-label">模板ID：</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="templateId" th:value="${abroad.templateId}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="id" class="col-sm-2 col-form-label">ID：</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="id" th:value="${abroad.id}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="projectNameCN" class="col-sm-2 col-form-label">项目名称：</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="projectNameCN" th:value="${abroad.projectNameCN}">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="infoList" class="col-sm-2 col-form-label">资料清单：</label>
+        <div class="col-sm-10">
+            <script id="infoList" type="text/plain" style="width:800px;height:200px;"></script>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="cosremark" class="col-sm-2 col-form-label">备注：</label>
+        <div class="col-sm-10">
+            <script id="cosremark" type="text/plain" style="width:800px;height:100px;"></script>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

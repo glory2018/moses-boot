@@ -1,9 +1,9 @@
 /*
  * Copyright © 2020 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.exam.sky.Test1
+ * @description: com.moses.framework.samples.exam.sky.Test1
  * @version V1.0
  */
-package com.ibm.mosesboot.exam.antiy;
+package com.moses.framework.samples.exam.antiy;
 
 /**
  * @author Moses

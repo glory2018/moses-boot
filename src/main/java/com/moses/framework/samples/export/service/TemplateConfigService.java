@@ -1,6 +1,6 @@
 /*
  * Copyright © 2019 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.service.MultipartFile
+ * @description: com.moses.framework.samples.service.MultipartFile
  * @version V1.0
  */
 package com.moses.framework.samples.export.service;

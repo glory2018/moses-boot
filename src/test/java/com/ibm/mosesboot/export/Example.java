@@ -1,9 +1,9 @@
 /*
  * Copyright © 2020 bjfansr@cn.ibm.com Inc. All rights reserved
- * @description: com.ibm.mosesboot.export.Example
+ * @description: com.moses.framework.samples.export.Example
  * @version V1.0
  */
-package com.ibm.mosesboot.export;
+package com.moses.framework.samples.export;
 
 import com.moses.framework.freemarker.RichHtmlHandler;
 import com.moses.framework.freemarker.WordGeneratorWithFreemarker;
