@@ -3,7 +3,7 @@
  * @description: com.ibm.PoiWordToHtml
  * @version V1.0
  */
-package com.moses.framework.samples.util;
+package com.ibm.mosesboot.util;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.hwpf.HWPFDocumentCore;
@@ -27,7 +27,7 @@ import java.io.FileInputStream;
  */
 public class PoiWordToHtml {
     public static void main(String[] args) throws Throwable {
-        HWPFDocumentCore wordDocument = WordToHtmlUtils.loadDoc(new FileInputStream("D:\\temp\\b.doc"));
+        HWPFDocumentCore wordDocument = WordToHtmlUtils.loadDoc(new FileInputStream("D:\\temp\\test.doc"));
         WordToHtmlConverter wordToHtmlConverter = new WordToHtmlConverter(
                 DocumentBuilderFactory.newInstance().newDocumentBuilder()
                         .newDocument());

@@ -7,7 +7,7 @@ public class AbroadDetail {
     private String confmAmount;
     private String deductible;
     private String confmPrem;
-    private String costCnpc;
+    private String shareCNPC;
 
     public Integer getId() {
         return id;
@@ -57,11 +57,11 @@ public class AbroadDetail {
         this.confmPrem = confmPrem == null ? null : confmPrem.trim();
     }
 
-    public String getCostCnpc() {
-        return costCnpc;
+    public String getShareCNPC() {
+        return shareCNPC;
     }
 
-    public void setCostCnpc(String costCnpc) {
-        this.costCnpc = costCnpc == null ? null : costCnpc.trim();
+    public void setShareCNPC(String shareCNPC) {
+        this.shareCNPC = shareCNPC;
     }
 }

@@ -1,8 +1,10 @@
 package com.moses.framework.samples.export.service;
 
 import com.moses.framework.samples.export.entity.Domestic;
+import com.moses.framework.samples.export.entity.DomesticDetail;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @author Moses
@@ -30,4 +32,6 @@ public interface DomesticService {
      * @return
      */
     Domestic findById(Integer id);
+
+    List<DomesticDetail> getDetailList(Integer id);
 }

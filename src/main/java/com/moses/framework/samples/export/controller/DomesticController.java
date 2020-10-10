@@ -10,6 +10,7 @@ package com.moses.framework.samples.export.controller;
  */
 
 import com.moses.framework.samples.export.entity.Domestic;
+import com.moses.framework.samples.export.entity.DomesticDetail;
 import com.moses.framework.samples.export.service.DomesticService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/domestic")
@@ -28,6 +30,8 @@ public class DomesticController {
     public String domestic(Model model, @PathVariable Integer id) {
         Domestic domestic = domesticService.findById(id);
         model.addAttribute("domestic", domestic);
+        List<DomesticDetail> list = domesticService.getDetailList(id);
+        model.addAttribute("detailList", list);
         return "/documents/domestic";
     }
 

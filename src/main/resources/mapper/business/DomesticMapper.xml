@@ -11,7 +11,7 @@
     <result column="group_equity" jdbcType="VARCHAR" property="groupEquity" />
     <result column="share_c_n_p_c" jdbcType="VARCHAR" property="shareCNPC" />
     <result column="linfen" jdbcType="VARCHAR" property="linfen" />
-    <result column="cost" jdbcType="DECIMAL" property="cost" />
+    <result column="cost" jdbcType="VARCHAR" property="cost" />
     <result column="e_s_g_p" jdbcType="VARCHAR" property="eSGP" />
     <result column="brokercname" jdbcType="VARCHAR" property="brokercname" />
     <result column="deduction" jdbcType="VARCHAR" property="deduction" />
@@ -49,7 +49,7 @@
     values (#{id,jdbcType=INTEGER}, #{templateId,jdbcType=INTEGER}, #{projectNameCN,jdbcType=VARCHAR}, 
       #{countryCodeName,jdbcType=VARCHAR}, #{policyInsured,jdbcType=VARCHAR}, #{passwdSetDate,jdbcType=VARCHAR}, 
       #{groupEquity,jdbcType=VARCHAR}, #{shareCNPC,jdbcType=VARCHAR}, #{linfen,jdbcType=VARCHAR}, 
-      #{cost,jdbcType=DECIMAL}, #{eSGP,jdbcType=VARCHAR}, #{brokercname,jdbcType=VARCHAR}, 
+      #{cost,jdbcType=VARCHAR}, #{eSGP,jdbcType=VARCHAR}, #{brokercname,jdbcType=VARCHAR},
       #{deduction,jdbcType=VARCHAR}, #{billComName,jdbcType=VARCHAR}, #{chief,jdbcType=VARCHAR}, 
       #{infoList,jdbcType=VARCHAR}, #{sumpaid,jdbcType=VARCHAR}, #{cosremark,jdbcType=VARCHAR}, 
       #{operateuser,jdbcType=VARCHAR}, #{claimDate,jdbcType=VARCHAR})
@@ -147,7 +147,7 @@
         #{linfen,jdbcType=VARCHAR},
       </if>
       <if test="cost != null">
-        #{cost,jdbcType=DECIMAL},
+        #{cost,jdbcType=VARCHAR},
       </if>
       <if test="eSGP != null">
         #{eSGP,jdbcType=VARCHAR},
@@ -209,7 +209,7 @@
         linfen = #{linfen,jdbcType=VARCHAR},
       </if>
       <if test="cost != null">
-        cost = #{cost,jdbcType=DECIMAL},
+        cost = #{cost,jdbcType=VARCHAR},
       </if>
       <if test="eSGP != null">
         e_s_g_p = #{eSGP,jdbcType=VARCHAR},
@@ -254,7 +254,7 @@
       group_equity = #{groupEquity,jdbcType=VARCHAR},
       share_c_n_p_c = #{shareCNPC,jdbcType=VARCHAR},
       linfen = #{linfen,jdbcType=VARCHAR},
-      cost = #{cost,jdbcType=DECIMAL},
+      cost = #{cost,jdbcType=VARCHAR},
       e_s_g_p = #{eSGP,jdbcType=VARCHAR},
       brokercname = #{brokercname,jdbcType=VARCHAR},
       deduction = #{deduction,jdbcType=VARCHAR},

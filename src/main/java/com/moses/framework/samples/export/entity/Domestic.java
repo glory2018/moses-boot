@@ -10,7 +10,7 @@ public class Domestic {
     private String groupEquity;
     private String shareCNPC;
     private String linfen;
-    private Long cost;
+    private String cost;
     private String eSGP;
     private String brokercname;
     private String deduction;
@@ -94,11 +94,11 @@ public class Domestic {
         this.linfen = linfen == null ? null : linfen.trim();
     }
 
-    public Long getCost() {
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(Long cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 

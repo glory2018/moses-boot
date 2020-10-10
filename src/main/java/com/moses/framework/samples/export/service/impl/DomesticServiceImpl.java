@@ -47,6 +47,11 @@ public class DomesticServiceImpl implements DomesticService {
     }
 
     @Override
+    public List<DomesticDetail> getDetailList(Integer id) {
+        return domesticDetailMapper.selectList(id);
+    }
+
+    @Override
     public void export(Integer id, HttpServletResponse response) throws Exception {
         String templatePath = UeditorServiceImpl.class.getResource("/ftl").getPath();
         templatePath = java.net.URLDecoder.decode(templatePath, "utf-8");
@@ -62,17 +67,16 @@ public class DomesticServiceImpl implements DomesticService {
     private HashMap<String, Object> getData(Domestic insurance) {
         HashMap<String, Object> data = new HashMap<String, Object>();
         data.put("projectNameCN", insurance.getProjectNameCN());
-        data.put("countryCodeName", insurance.getCountryCodeName());
+        data.put("cn", insurance.getCountryCodeName());
         data.put("policyInsured", insurance.getPolicyInsured());
         data.put("passwdSetDate", insurance.getPasswdSetDate());
         data.put("groupEquity", insurance.getGroupEquity());
-//        data.put("shareCNPCView", insurance.getShareCNPCView());
-        List<DomesticDetail> list = domesticDetailMapper.selectList(insurance.getId());
-        data.put("list", list);
-        data.put("Linfen", "yes");
-        data.put("LinfenRate", "100");
-        data.put("costPrem", "100");
-        data.put("costCnpc", "111");
+        data.put("shareCNPC", insurance.getShareCNPC());
+        List<DomesticDetail> detailList = getDetailList(insurance.getId());
+        data.put("list", detailList);
+        data.put("ESGP", insurance.geteSGP());
+        data.put("linfen", insurance.getLinfen());
+        data.put("cost", insurance.getCost());
         data.put("brokercname", insurance.getBrokercname());
         data.put("deduction", insurance.getDeduction());
         data.put("billComName", insurance.getBillComName());
@@ -82,5 +86,15 @@ public class DomesticServiceImpl implements DomesticService {
         data.put("claimDate", insurance.getClaimDate());
         return data;
     }
+//    private List<Map> getList(List<DomesticDetail> detailList) {
+//        List<Map> list = new ArrayList<>();
+//        for(DomesticDetail detail:detailList){
+//            Map map = new HashMap<>();
+//            map.put("riskName", detail.getRiskName());
+//            map.put("", detail.getRiskName());
+//            map.put("", detail.getRiskName());
+//            map.put("", detail.getRiskName());
+//        }
+//    }
 }
 

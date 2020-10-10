@@ -8,15 +8,15 @@
     <result column="confm_amount" jdbcType="VARCHAR" property="confmAmount" />
     <result column="deductible" jdbcType="VARCHAR" property="deductible" />
     <result column="confm_prem" jdbcType="VARCHAR" property="confmPrem" />
-    <result column="cost_cnpc" jdbcType="VARCHAR" property="costCnpc" />
+    <result column="share_cnpc" jdbcType="VARCHAR" property="shareCNPC" />
   </resultMap>
   <insert id="insert" parameterType="com.moses.framework.samples.export.entity.AbroadDetail">
     insert into doc_abroad_detail (id, insurance_id, risk_name, 
       confm_amount, deductible, confm_prem, 
-      cost_cnpc)
+      share_cnpc)
     values (#{id,jdbcType=INTEGER}, #{insuranceId,jdbcType=INTEGER}, #{riskName,jdbcType=VARCHAR}, 
       #{confmAmount,jdbcType=VARCHAR}, #{deductible,jdbcType=VARCHAR}, #{confmPrem,jdbcType=VARCHAR}, 
-      #{costCnpc,jdbcType=VARCHAR})
+      #{shareCNPC,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.moses.framework.samples.export.entity.AbroadDetail">
     insert into doc_abroad_detail
@@ -39,8 +39,8 @@
       <if test="confmPrem != null">
         confm_prem,
       </if>
-      <if test="costCnpc != null">
-        cost_cnpc,
+      <if test="shareCNPC != null">
+        share_cnpc,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -62,8 +62,8 @@
       <if test="confmPrem != null">
         #{confmPrem,jdbcType=VARCHAR},
       </if>
-      <if test="costCnpc != null">
-        #{costCnpc,jdbcType=VARCHAR},
+      <if test="shareCNPC != null">
+        #{shareCNPC,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -71,6 +71,6 @@
       select
       *
       from doc_abroad_detail
-      where id = #{id,jdbcType=INTEGER}
+      where insurance_id = #{id,jdbcType=INTEGER}
     </select>
 </mapper>

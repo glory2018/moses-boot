@@ -62,17 +62,17 @@ public class AbroadServiceImpl implements AbroadService {
     private HashMap<String, Object> getData(Abroad insurance) {
         HashMap<String, Object> data = new HashMap<String, Object>();
         data.put("projectNameCN", insurance.getProjectNameCN());
-        data.put("countryCodeName", insurance.getCountryCodeName());
+        data.put("cn", insurance.getCountryCodeName());
         data.put("policyInsured", insurance.getPolicyInsured());
         data.put("passwdSetDate", insurance.getPasswdSetDate());
         data.put("groupEquity", insurance.getGroupEquity());
-        data.put("shareCNPCView", insurance.getShareCNPCView());
+        data.put("cnpc", insurance.getShareCNPCView());
         List<AbroadDetail> list = abroadDetailMapper.selectList(insurance.getId());
         data.put("list", list);
-        data.put("Linfen", "yes");
-        data.put("LinfenRate", "100");
-        data.put("costPrem", "100");
-        data.put("costCnpc", "111");
+        data.put("Linfen", "否 ");
+//        data.put("LinfenRate", "");
+        data.put("costPrem", "15万美元");
+        data.put("costCnpc", "7.5万美元");
         data.put("brokercname", insurance.getBrokercname());
         data.put("deduction", insurance.getDeduction());
         data.put("billComName", insurance.getBillComName());
