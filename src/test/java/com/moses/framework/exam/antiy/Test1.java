@@ -30,7 +30,7 @@ public class Test1 {
             b = c;
             c = t;
         }
-        System.out.println(a+"--"+b+"--"+c);
+        System.out.println(a + "--" + b + "--" + c);
     }
 
     // test
